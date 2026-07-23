@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cliente — LZTec</title>
+    <script>(function(){var t=localStorage.getItem("valora_theme")||"dark";document.documentElement.setAttribute("data-theme",t);})();</script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+/* ── CSS VARIABLES — DARK (default) ── */
+:root {
+    --azul-vivo:       #1A6FFF;
+    --azul-meia-noite: #060E24;
+    --azul-profundo:   #091533;
+    --azul-card:       #0D1D40;
+    --azul-borda:      #1A3060;
+    --cinza-texto:     #8EA3C3;
+    --branco:          #EAF0FF;
+    --acento:          #00D4FF;
+    --verde:           #00DC82;
+    --amarelo:         #F5A623;
+    --vermelho:        #FF4D6A;
+}
+
+/* ── LIGHT MODE ── */
+html[data-theme="light"] {
+    --azul-meia-noite: #E8ECF2;
+    --azul-profundo:   #F2F4F8;
+    --azul-card:       #F7F8FC;
+    --azul-borda:      #D6E0F5;
+    --cinza-texto:     #5A7096;
+    --branco:          #1A2B4A;
+    --acento:          #0099CC;
+    --verde:           #00A65C;
+    --amarelo:         #C47A00;
+    --vermelho:        #D93055;
+}
+html[data-theme="light"] body          { background-color: #E8ECF2; color: #1A2B4A; }
+html[data-theme="light"] .navbar-custom{ background-color: #FFFFFF !important; border-bottom: 1px solid #D6E0F5; box-shadow: 0 1px 8px rgba(26,111,255,0.07); }
+html[data-theme="light"] .logo-text    { color: #1A2B4A; }
+html[data-theme="light"] .sidebar      { background-color: #F2F4F8; border-right: 1px solid #D6E0F5; }
+html[data-theme="light"] .sidebar-section-label { color: #A0B4D0; }
+html[data-theme="light"] .nav-link     { color: #5A7096 !important; }
+html[data-theme="light"] .nav-link:hover { background: rgba(26,111,255,0.06); color: #1A2B4A !important; }
+html[data-theme="light"] .nav-link.active-page { background: rgba(26,111,255,0.1) !important; color: #1A6FFF !important; }
+html[data-theme="light"] .main-content { background: #E8ECF2; }
+html[data-theme="light"] .v-card       { background: #F7F8FC; border-color: #D6E0F5; box-shadow: 0 2px 12px rgba(26,111,255,0.06); }
+html[data-theme="light"] .v-card-header{ border-bottom-color: #D6E0F5; }
+html[data-theme="light"] .v-card-header h5 { color: #1A2B4A; }
+html[data-theme="light"] .form-control,
+html[data-theme="light"] .form-select  { background: #ECEEF5 !important; border-color: #D6E0F5 !important; color: #1A2B4A !important; }
+html[data-theme="light"] .form-control::placeholder { color: #A0B4D0 !important; }
+html[data-theme="light"] .form-control[readonly]     { color: #A0B4D0 !important; background: #EEF3FF !important; }
+html[data-theme="light"] .form-select option         { background: #FFFFFF; color: #1A2B4A; }
+html[data-theme="light"] .input-group-text { background: rgba(26,111,255,0.07) !important; border-color: #D6E0F5 !important; }
+html[data-theme="light"] .form-label   { color: #5A7096; }
+html[data-theme="light"] .form-text    { color: #A0B4D0; }
+html[data-theme="light"] .form-section-title         { color: #5A7096; }
+html[data-theme="light"] .form-section-title::after  { background: #D6E0F5; }
+html[data-theme="light"] .v-table thead tr  { border-bottom-color: #D6E0F5; }
+html[data-theme="light"] .v-table thead th  { color: #5A7096; }
+html[data-theme="light"] .v-table tbody tr  { border-bottom-color: #EEF2FA; }
+html[data-theme="light"] .v-table tbody tr:hover { background: rgba(26,111,255,0.04); }
+html[data-theme="light"] .v-table tbody td  { color: #1A2B4A; }
+html[data-theme="light"] .v-table tfoot td  { color: #1A2B4A; border-top-color: #D6E0F5; background: #F6F9FF; }
+html[data-theme="light"] .badge-codigo      { background: rgba(26,111,255,0.08); color: #0A5ACC; border-color: rgba(10,90,204,0.2); }
+html[data-theme="light"] .badge-valor       { background: rgba(0,166,92,0.1); color: #00845A; border-color: rgba(0,166,92,0.25); }
+html[data-theme="light"] .badge-info        { background: rgba(0,153,204,0.1); color: #0077AA; border-color: rgba(0,153,204,0.25); }
+html[data-theme="light"] .badge-placa       { background: rgba(245,166,35,0.1); color: #7A5200; border: 1px solid rgba(245,166,35,0.4); }
+html[data-theme="light"] .badge-lucro       { color: #00845A; }
+html[data-theme="light"] .badge-prejuizo    { color: #D93055; }
+html[data-theme="light"] .btn-secondary-v   { border-color: #D6E0F5; color: #5A7096; }
+html[data-theme="light"] .btn-secondary-v:hover { border-color: #5A7096; color: #1A2B4A; }
+html[data-theme="light"] .btn-outline-add   { background: rgba(26,111,255,0.06); border-color: rgba(26,111,255,0.25); }
+html[data-theme="light"] .btn-action        { border-color: #D6E0F5; color: #5A7096; }
+html[data-theme="light"] .page-header h1    { color: #1A2B4A; }
+html[data-theme="light"] .page-header p     { color: #5A7096; }
+html[data-theme="light"] .page-header-icon  { background: rgba(26,111,255,0.1); }
+html[data-theme="light"] .section-title     { color: #5A7096; }
+html[data-theme="light"] #alertContainer .alert { background: #F7F8FC; border-color: #D6E0F5; color: #1A2B4A; }
+html[data-theme="light"] .v-divider         { border-top-color: #D6E0F5; }
+html[data-theme="light"] .total-box         { background: #ECEEF5; border-color: #D6E0F5; }
+html[data-theme="light"] .total-box .lbl    { color: #5A7096; }
+html[data-theme="light"] .total-box .horas  { color: #1A2B4A; }
+html[data-theme="light"] .filter-bar .form-control,
+html[data-theme="light"] .filter-bar .form-select { background: #FFFFFF !important; }
+html[data-theme="light"] .checkbox-container { background: #ECEEF5; border-color: #D6E0F5; }
+html[data-theme="light"] .checkbox-item label { color: #1A2B4A; }
+html[data-theme="light"] .km-total-box      { background: #ECEEF5; border-color: #D6E0F5; }
+html[data-theme="light"] .km-total-box .lbl { color: #5A7096; }
+html[data-theme="light"] .login-box         { background: #F7F8FC; border-color: #D6E0F5; }
+html[data-theme="light"] .login-box h2,
+html[data-theme="light"] .login-box p       { color: #1A2B4A; }
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ── BASE ── */
+body {
+    background-color: var(--azul-meia-noite);
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+}
+
+/* ── NAVBAR ── */
+.navbar-custom {
+    background-color: var(--azul-profundo);
+    border-bottom: 1px solid var(--azul-borda);
+    height: 60px; z-index: 1030;
+    padding: 0 1.5rem; position: fixed; width: 100%;
+    display: flex; align-items: center; justify-content: space-between;
+}
+.logo-wrapper   { display: flex; align-items: center; gap: 10px; }
+.logo-icon      { width: 34px; height: 34px; background: var(--azul-vivo); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.logo-icon svg  { width: 20px; height: 20px; fill: white; }
+.logo-icon i    { font-size: 1.05rem; color: white; }
+.logo-text      { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem; letter-spacing: 3px; color: white; }
+.logo-text span { color: var(--acento); }
+.navbar-right   { display: flex; align-items: center; gap: 8px; }
+.btn-sair {
+    background: transparent; border: 1px solid var(--azul-borda);
+    color: var(--cinza-texto); font-size: 0.8rem; padding: 6px 14px;
+    border-radius: 6px; font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s; display: flex; align-items: center; gap: 6px; cursor: pointer;
+}
+.btn-sair:hover { border-color: var(--azul-vivo); color: var(--branco); }
+.btn-theme {
+    background: transparent; border: 1px solid var(--azul-borda);
+    color: var(--cinza-texto); width: 36px; height: 36px;
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; cursor: pointer; transition: all 0.2s;
+}
+.btn-theme:hover { border-color: var(--azul-vivo); color: var(--branco); }
+
+/* ── SIDEBAR ── */
+.sidebar {
+    width: 240px; position: fixed; top: 60px; left: 0; bottom: 0;
+    background-color: var(--azul-profundo); border-right: 1px solid var(--azul-borda);
+    padding: 1.25rem 0; z-index: 1020; overflow-y: auto;
+}
+.sidebar-section-label {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: #3A5280;
+    padding: 0.75rem 1.25rem 0.4rem;
+}
+.nav-link {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 1.25rem; color: var(--cinza-texto) !important;
+    font-size: 0.875rem; font-weight: 400;
+    border-left: 3px solid transparent; transition: all 0.18s; text-decoration: none;
+}
+.nav-link:hover { color: var(--branco) !important; background: rgba(26,111,255,0.08); border-left-color: rgba(26,111,255,0.4); }
+.nav-link.active-page { color: white !important; background: rgba(26,111,255,0.15) !important; border-left: 3px solid var(--azul-vivo) !important; }
+.nav-link i { font-size: 1rem; width: 18px; text-align: center; }
+
+/* ── LAYOUT ── */
+.main-content { margin-left: 240px; padding-top: 60px; min-height: 100vh; background: var(--azul-meia-noite); }
+.main-inner   { padding: 2.5rem; }
+
+/* ── PAGE HEADER ── */
+.page-header  { display: flex; align-items: center; gap: 14px; margin-bottom: 2rem; }
+.page-header-icon { width: 46px; height: 46px; background: rgba(26,111,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--azul-vivo); font-size: 1.3rem; }
+.page-header h1 { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; margin: 0; line-height: 1; }
+.page-header p  { font-size: 0.8rem; color: var(--cinza-texto); margin: 4px 0 0; font-weight: 300; }
+
+/* ── SECTION TITLE ── */
+.section-title { font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--cinza-texto); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem; margin-top: 2rem; }
+
+/* ── TOAST (mensagens de feedback) ── */
+#alertContainer {
+    position: fixed; bottom: 20px; right: 20px; z-index: 3000;
+    width: 360px; max-width: calc(100vw - 32px);
+    display: flex; flex-direction: column; gap: 10px; margin: 0 !important;
+}
+#alertContainer .alert { background: var(--azul-card); border: 1px solid var(--azul-borda); color: var(--branco); border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); animation: toastIn 0.25s ease; margin: 0; }
+#alertContainer .alert-success { border-left: 4px solid var(--verde); }
+#alertContainer .alert-warning { border-left: 4px solid var(--amarelo); }
+#alertContainer .alert-danger  { border-left: 4px solid var(--vermelho); }
+#alertContainer .alert-info    { border-left: 4px solid var(--acento); }
+#alertContainer .btn-close     { filter: invert(1) brightness(0.7); }
+#alertContainer .alert.toast-leaving { animation: toastOut 0.2s ease forwards; }
+@keyframes toastIn  { from { opacity:0; transform: translateX(40px); } to { opacity:1; transform: translateX(0); } }
+@keyframes toastOut { from { opacity:1; transform: translateX(0); } to { opacity:0; transform: translateX(40px); } }
+@media (max-width: 480px) { #alertContainer { right: 12px; bottom: 12px; left: 12px; width: auto; } }
+
+/* ── CARD ── */
+.v-card        { background: var(--azul-card); border: 1px solid var(--azul-borda); border-radius: 14px; margin-bottom: 1.5rem; }
+.v-card-header { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--azul-borda); display: flex; align-items: center; justify-content: space-between; }
+.v-card-header h5 { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--branco); margin: 0; letter-spacing: 0.5px; }
+.v-card-header .section-icon { color: var(--azul-vivo); margin-right: 8px; }
+.v-card-body   { padding: 1.5rem; }
+
+/* ── FORM ── */
+.form-label { font-size: 0.72rem; font-weight: 500; color: var(--cinza-texto); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+.form-label .obrig { color: var(--vermelho); }
+.form-control, .form-select {
+    background: var(--azul-profundo) !important; border: 1px solid var(--azul-borda) !important;
+    color: var(--branco) !important; border-radius: 8px; font-size: 0.9rem; padding: 0.55rem 0.85rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--azul-vivo) !important; box-shadow: 0 0 0 3px rgba(26,111,255,0.15) !important; outline: none;
+}
+.form-control::placeholder { color: #3A5280 !important; }
+.form-control[readonly]    { color: #3A5280 !important; cursor: default; }
+.form-select option        { background: var(--azul-card); color: var(--branco); }
+.form-select option:disabled { color: #3A5280; }
+.form-text { font-size: 0.72rem; color: #3A5280; margin-top: 4px; }
+.input-group-text {
+    background: rgba(26,111,255,0.1) !important; border: 1px solid var(--azul-borda) !important;
+    color: var(--azul-vivo) !important; font-size: 0.85rem;
+}
+select[multiple] { min-height: 90px; }
+
+/* ── FORM SECTION TITLE ── */
+.form-section-title {
+    font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--cinza-texto);
+    margin: 1.5rem 0 1rem; display: flex; align-items: center; gap: 8px;
+}
+.form-section-title::after { content: ''; flex: 1; height: 1px; background: var(--azul-borda); }
+.form-section-title i { color: var(--azul-vivo); font-size: 0.9rem; }
+
+/* ── CHECKBOX CONTAINER ── */
+.checkbox-container {
+    background: var(--azul-profundo); border: 1px solid var(--azul-borda);
+    border-radius: 8px; padding: 1rem; max-height: 200px; overflow-y: auto;
+}
+.checkbox-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+.checkbox-item input[type="checkbox"] { accent-color: var(--azul-vivo); width: 15px; height: 15px; cursor: pointer; }
+.checkbox-item label { font-size: 0.875rem; color: var(--branco); cursor: pointer; margin: 0; }
+
+/* ── BUTTONS ── */
+.btn-primary-v {
+    background: var(--azul-vivo); border: none; color: white;
+    font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.9rem;
+    padding: 10px 24px; border-radius: 8px;
+    display: inline-flex; align-items: center; gap: 8px;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+}
+.btn-primary-v:hover { background: #1560e0; transform: translateY(-1px); }
+.btn-success-v {
+    background: rgba(0,220,130,0.15); border: 1px solid var(--verde); color: var(--verde);
+    font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.9rem;
+    padding: 10px 24px; border-radius: 8px;
+    display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: background 0.2s;
+}
+.btn-success-v:hover { background: rgba(0,220,130,0.25); }
+.btn-secondary-v {
+    background: transparent; border: 1px solid var(--azul-borda); color: var(--cinza-texto);
+    font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 0.9rem;
+    padding: 10px 20px; border-radius: 8px;
+    display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.18s;
+}
+.btn-secondary-v:hover { border-color: var(--cinza-texto); color: var(--branco); }
+.btn-outline-add {
+    background: rgba(26,111,255,0.08); border: 1px solid rgba(26,111,255,0.35); color: var(--azul-vivo);
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; padding: 8px 16px; border-radius: 8px;
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: all 0.18s; white-space: nowrap;
+}
+.btn-outline-add:hover { background: rgba(26,111,255,0.18); border-color: var(--azul-vivo); }
+.btn-pdf {
+    background: rgba(0,220,130,0.08); border: 1px solid rgba(0,220,130,0.35); color: var(--verde);
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; padding: 8px 16px; border-radius: 8px;
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: all 0.18s;
+}
+.btn-pdf:hover { background: rgba(0,220,130,0.18); border-color: var(--verde); }
+.btn-range {
+    background: transparent; border: 1px solid var(--azul-borda); color: var(--cinza-texto);
+    font-size: 0.78rem; padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: all 0.18s;
+    font-family: 'DM Sans', sans-serif;
+}
+.btn-range:hover { border-color: var(--azul-vivo); color: var(--branco); background: rgba(26,111,255,0.08); }
+
+/* ── TABLE ── */
+.v-table { width: 100%; border-collapse: collapse; }
+.v-table thead tr  { border-bottom: 1px solid var(--azul-borda); }
+.v-table thead th  { font-family: 'Syne', sans-serif; font-size: 0.62rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cinza-texto); padding: 0.75rem 1rem; white-space: nowrap; }
+.v-table tbody tr  { border-bottom: 1px solid rgba(26,48,96,0.5); transition: background 0.15s; }
+.v-table tbody tr:hover { background: rgba(26,111,255,0.05); }
+.v-table tbody td  { padding: 0.85rem 1rem; font-size: 0.875rem; color: var(--branco); vertical-align: middle; }
+.v-table tfoot td  { padding: 0.85rem 1rem; font-size: 0.85rem; color: var(--branco); font-weight: 600; border-top: 1px solid var(--azul-borda); background: rgba(26,48,96,0.2); }
+
+/* ── PAGINAÇÃO ── */
+.v-pagination { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.85rem 0; }
+.pg-arrow { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--azul-borda); background: var(--azul-card); color: var(--branco); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.8rem; transition: all 0.15s; padding: 0; }
+.pg-arrow:hover:not(:disabled) { border-color: var(--azul-vivo); color: var(--azul-vivo); }
+.pg-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+.pg-dots { display: flex; align-items: center; gap: 6px; }
+.pg-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--azul-borda); border: none; padding: 0; cursor: pointer; transition: all 0.15s; }
+.pg-dot:hover { opacity: 0.7; }
+.pg-dot.active { background: var(--azul-vivo); width: 20px; border-radius: 4px; }
+html[data-theme="light"] .pg-arrow { background: #FFFFFF; border-color: #D6E0F5; color: #1A2B4A; }
+html[data-theme="light"] .pg-dot   { background: #D6E0F5; }
+
+/* ── BADGES ── */
+.badge-codigo  { font-family: 'Courier New', monospace; font-size: 0.75rem; letter-spacing: 1px; background: rgba(26,111,255,0.12); color: var(--acento); border: 1px solid rgba(0,212,255,0.2); padding: 3px 8px; border-radius: 5px; }
+.badge-valor   { font-size: 0.75rem; background: rgba(0,220,130,0.1); color: var(--verde); border: 1px solid rgba(0,220,130,0.2); padding: 3px 10px; border-radius: 5px; }
+.badge-info    { font-size: 0.75rem; background: rgba(0,212,255,0.1); color: var(--acento); border: 1px solid rgba(0,212,255,0.2); padding: 3px 10px; border-radius: 5px; font-family: 'Courier New', monospace; }
+.badge-placa   { font-family: 'Courier New', monospace; font-size: 0.75rem; letter-spacing: 2px; background: rgba(245,166,35,0.12); color: var(--amarelo); border: 1px solid rgba(245,166,35,0.3); padding: 3px 10px; border-radius: 5px; }
+.badge-lucro   { font-size: 0.78rem; font-weight: 600; color: var(--verde); }
+.badge-prejuizo{ font-size: 0.78rem; font-weight: 600; color: var(--vermelho); }
+.badge-estoque-ok    { font-size: 0.75rem; background: rgba(0,220,130,0.12); color: var(--verde); border: 1px solid rgba(0,220,130,0.2); padding: 3px 10px; border-radius: 5px; }
+.badge-estoque-baixo { font-size: 0.75rem; background: rgba(245,166,35,0.12); color: var(--amarelo); border: 1px solid rgba(245,166,35,0.25); padding: 3px 10px; border-radius: 5px; }
+.badge-estoque-zero  { font-size: 0.75rem; background: rgba(255,77,106,0.12); color: var(--vermelho); border: 1px solid rgba(255,77,106,0.25); padding: 3px 10px; border-radius: 5px; }
+
+/* ── ACTION BUTTONS ── */
+.btn-action { width: 32px; height: 32px; border-radius: 7px; border: 1px solid var(--azul-borda); background: transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; color: var(--cinza-texto); transition: all 0.18s; margin: 0 2px; }
+.btn-action:hover { border-color: var(--azul-vivo); color: var(--azul-vivo); background: rgba(26,111,255,0.08); }
+.btn-action.danger:hover { border-color: var(--vermelho); color: var(--vermelho); background: rgba(255,77,106,0.08); }
+
+/* ── DIVIDERS ── */
+.v-divider { border: none; border-top: 1px solid var(--azul-borda); margin: 1.5rem 0; }
+
+/* ── TOTAL BOX ── */
+.total-box { background: var(--azul-profundo); border: 1px solid var(--azul-borda); border-radius: 10px; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem; }
+.total-box .lbl   { font-size: 0.78rem; color: var(--cinza-texto); text-transform: uppercase; letter-spacing: 1px; }
+.total-box .val   { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--verde); }
+.total-box .horas { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--branco); }
+
+/* ── KM TOTAL BOX ── */
+.km-total-box { background: var(--azul-profundo); border: 1px solid var(--azul-borda); border-radius: 8px; padding: 0.6rem 1rem; display: flex; align-items: center; gap: 8px; }
+.km-total-box .lbl { font-size: 0.7rem; color: var(--cinza-texto); text-transform: uppercase; letter-spacing: 1px; }
+.km-total-box .val { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--acento); }
+
+/* ── FILTER BAR ── */
+.filter-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; align-items: flex-end; }
+.filter-bar .form-control,
+.filter-bar .form-select { max-width: 260px; }
+
+/* ── PROD MINI TABLE ── */
+.prod-table { width: 100%; border-collapse: collapse; margin-top: 0.75rem; }
+.prod-table th  { font-family: 'Syne', sans-serif; font-size: 0.62rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cinza-texto); padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--azul-borda); }
+.prod-table td  { padding: 0.65rem 0.75rem; font-size: 0.85rem; border-bottom: 1px solid rgba(26,48,96,0.4); vertical-align: middle; color: var(--branco); }
+.prod-table tfoot td { border-top: 1px solid var(--azul-borda); border-bottom: none; font-weight: 600; color: var(--branco); }
+
+/* ── LOGIN SPECIAL ── */
+.login-wrapper { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.login-box { width: 100%; max-width: 420px; background: var(--azul-card); border: 1px solid var(--azul-borda); border-radius: 20px; overflow: hidden; }
+.login-header { background: linear-gradient(135deg, var(--azul-profundo) 0%, rgba(26,111,255,0.2) 100%); padding: 2.5rem 2rem; text-align: center; border-bottom: 1px solid var(--azul-borda); }
+.login-badge  { width: 64px; height: 64px; background: linear-gradient(135deg, var(--azul-vivo), var(--acento)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 0 30px rgba(26,111,255,0.3); }
+.login-badge svg { width: 34px; height: 34px; fill: white; }
+.login-nome   { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; letter-spacing: 4px; color: white; }
+.login-nome span { color: var(--acento); }
+.login-sub    { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza-texto); margin-top: 4px; }
+.login-body   { padding: 2rem; }
+.login-footer { padding: 0.85rem 2rem; border-top: 1px solid var(--azul-borda); text-align: center; font-size: 0.72rem; color: var(--cinza-texto); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 992px) {
+    .sidebar      { display: none !important; }
+    .main-content { margin-left: 0; }
+}
+/* ── RESPONSIVO MOBILE (heurística: flexibilidade de uso em qualquer dispositivo) ── */
+@media (max-width: 768px) {
+    .main-inner { padding: 1.25rem; }
+    .page-header { flex-wrap: wrap; }
+    .page-header h1 { font-size: 1.2rem; }
+    .v-card-body { padding: 1rem; }
+    .row > [class*="col-"] { margin-bottom: 0.5rem; }
+    .filter-bar { flex-direction: column; align-items: stretch; }
+    .filter-bar .form-control, .filter-bar .form-select { max-width: 100%; }
+    .v-table { font-size: 0.78rem; }
+    .v-table thead th, .v-table tbody td { padding: 0.5rem 0.5rem; }
+    .d-flex.justify-content-end { flex-wrap: wrap; }
+    .btn-primary-v, .btn-secondary-v, .btn-success-v { width: 100%; justify-content: center; }
+}
+@media (max-width: 480px) {
+    .navbar-custom { padding: 0 0.75rem; }
+    .logo-text { font-size: 1.05rem; letter-spacing: 1.5px; }
+    .main-inner { padding: 0.85rem; }
+    .v-table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+
+
+/* ── SELETOR RADIO CPF/CNPJ ── */
+.radio-tipo-group { display: flex; gap: 24px; align-items: center; margin-bottom: 10px; }
+.radio-tipo {
+    display: flex; align-items: center; gap: 7px;
+    cursor: pointer; font-size: 0.85rem; color: var(--cinza-texto);
+    transition: color 0.18s; font-weight: 400;
+}
+.radio-tipo:hover { color: var(--branco); }
+.radio-tipo input[type="radio"] {
+    width: 17px; height: 17px; accent-color: var(--azul-vivo);
+    cursor: pointer; margin: 0;
+}
+.radio-tipo.selecionado { color: var(--branco); font-weight: 600; }
+#blocoCNPJ {
+    background: var(--azul-profundo); border: 1px solid var(--azul-borda);
+    border-radius: 10px; padding: 1.25rem; margin-top: 0.75rem;
+}
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* ── RBAC ── */
+.admin-only { display: none !important; }
+body.role-admin .admin-only { display: inline-flex !important; }
+body.role-admin .admin-only-block { display: block !important; }
+.admin-only-block { display: none !important; }
+
+    </style>
+</head>
+<body>
+<script>const _t=localStorage.getItem('auth_token');if(!_t||_t.includes('null')||_t.length<10){alert("Acesso negado.");window.location.href='login.html';}</script>
+<!-- NAVBAR -->
+<nav class="navbar-custom">
+    <a class="text-decoration-none" href="dashboard.html">
+        <div class="logo-wrapper">
+            <div class="logo-icon">
+                <i class="bi bi-cart-fill"></i>
+            </div>
+            <span class="logo-text">LZ<span>Tec</span></span>
+        </div>
+    </a>
+    <div class="navbar-right">
+        <span id="userInfo" style="font-size:0.78rem;color:var(--cinza-texto);margin-right:8px;"></span>
+        <button class="btn-theme" id="btnTheme" onclick="toggleTheme()" title="Alternar tema">
+            <i class="bi bi-moon-fill" id="themeIcon"></i>
+        </button>
+        <button class="btn-sair" onclick="sair()"><i class="bi bi-box-arrow-right"></i> Sair</button>
+    </div>
+</nav>
+
+<div class="d-flex">
+    <!-- SIDEBAR -->
+    <div class="sidebar d-none d-lg-block">
+        <nav class="nav flex-column">
+            <p class="sidebar-section-label">Geral</p>
+            <a class="nav-link" href="dashboard.html"><i class="bi bi-house-door-fill"></i> Início</a>
+            <a class="nav-link" href="aniversariantes.html"><i class="bi bi-gift-fill"></i> Aniversariantes</a>
+
+            <p class="sidebar-section-label">Cadastros</p>
+            <a class="nav-link active-page" href="cadastro-cliente.html"><i class="bi bi-person-vcard-fill"></i> Cliente</a>
+            <a class="nav-link" href="cadastro-produto.html"><i class="bi bi-box-fill"></i> Produto / Estoque</a>
+
+            <p class="sidebar-section-label">Movimentos</p>
+            <a class="nav-link" href="vendas.html"><i class="bi bi-cart-fill"></i> Vendas</a>
+
+            <p class="sidebar-section-label">Relatórios</p>
+            <a class="nav-link" href="relatorio-vendas-pagas.html"><i class="bi bi-file-earmark-bar-graph-fill"></i> Vendas Pagas</a>
+            <a class="nav-link" href="relatorio-vendas-pendentes.html"><i class="bi bi-hourglass-split"></i> Vendas Pendentes</a>
+
+            <p class="sidebar-section-label admin-only-block">Administração</p>
+            <a class="nav-link admin-only" href="gerenciar-usuarios.html"><i class="bi bi-people-fill"></i> Usuários</a>
+        </nav>
+    </div>
+
+    <!-- MAIN -->
+    <main class="main-content flex-grow-1">
+        <div class="main-inner">
+
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="page-header-icon"><i class="bi bi-building-fill"></i></div>
+                <div><h1>Cadastro de Cliente</h1><p>Gerencie os dados dos clientes atendidos</p></div>
+            </div>
+
+            <div id="alertContainer"></div>
+
+            <div class="v-card">
+                <div class="v-card-header"><h5><i class="bi bi-plus-circle section-icon"></i>Informações do Cliente</h5></div>
+                <div class="v-card-body">
+                    <form id="frmCadastroCliente">
+                        <input type="hidden" id="clienteId" value="">
+
+                        <!-- Seletor: Pessoa Física (CPF) ou Jurídica (CNPJ) -->
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <label class="form-label">Tipo de Cliente</label>
+                                <div class="radio-tipo-group">
+                                    <label class="radio-tipo selecionado" id="lblTipoCPF">
+                                        <input type="radio" name="tipoPessoa" value="CPF" checked onchange="setTipo('CPF')">
+                                        <i class="bi bi-person-fill"></i> Pessoa Física (CPF)
+                                    </label>
+                                    <label class="radio-tipo" id="lblTipoCNPJ">
+                                        <input type="radio" name="tipoPessoa" value="CNPJ" onchange="setTipo('CNPJ')">
+                                        <i class="bi bi-building-fill"></i> Pessoa Jurídica (CNPJ)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BLOCO CPF (pessoa física) -->
+                        <div id="blocoCPF">
+                            <div class="row mb-3">
+                                <div class="col-md-8">
+                                    <label class="form-label">Nome Completo <span class="obrig">*</span></label>
+                                    <input type="text" class="form-control" id="nomeCliente" placeholder="Ex: João da Silva">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">CPF <span class="obrig">*</span></label>
+                                    <input type="text" class="form-control" id="cpfCnpj" placeholder="000.000.000-00" maxlength="14">
+                                    <div id="cpfCnpjFeedback" style="font-size:0.75rem;margin-top:3px;display:none;"></div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label class="form-label">CEP <span class="obrig">*</span></label>
+                                    <input type="text" class="form-control" id="cepCliente" placeholder="00000-000" maxlength="9" oninput="onCepInput(this.value)">
+                                    <div id="cepFeedback" style="font-size:0.75rem;margin-top:3px;display:none;"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Município</label>
+                                    <input type="text" class="form-control" id="municipioCliente" placeholder="Preenchido pelo CEP">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">UF</label>
+                                    <input type="text" class="form-control" id="ufCliente" placeholder="SP" maxlength="2" style="text-transform:uppercase;">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Endereço <span class="obrig">*</span></label>
+                                    <input type="text" class="form-control" id="enderecoCliente" placeholder="Ex: Rua das Flores">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label">Número <span class="obrig">*</span></label>
+                                    <input type="text" class="form-control" id="numeroCliente" placeholder="Ex: 123">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Bairro <span class="obrig">*</span></label>
+                                    <input type="text" class="form-control" id="bairroCliente" placeholder="Ex: Centro">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Endereço Adicional <span style="text-transform:none;letter-spacing:0;font-size:0.72rem;color:var(--cinza-texto)">(opcional)</span></label>
+                                    <input type="text" class="form-control" id="enderecoAdicionalCpf" placeholder="Endereço alternativo, se houver.">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Data de Nascimento <span style="text-transform:none;letter-spacing:0;font-size:0.72rem;color:var(--cinza-texto)">(opcional)</span></label>
+                                    <input type="date" class="form-control" id="dataNascimentoCliente">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BLOCO CNPJ (pessoa jurídica) -->
+                        <div id="blocoCNPJ" style="display:none;">
+                            <div class="row mb-3 align-items-end">
+                                <div class="col-md-4">
+                                    <label class="form-label">CNPJ <span class="obrig">*</span></label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="cnpjInput" placeholder="00.000.000/0000-00" maxlength="18" oninput="onCnpjInput(this.value)">
+                                        <button type="button" class="btn-secondary-v" id="btnBuscarCnpj"
+                                                onclick="buscarCNPJ()"
+                                                title="Buscar dados na Receita Federal"
+                                                style="border-radius:0 8px 8px 0;padding:0 12px;white-space:nowrap;">
+                                            <i class="bi bi-search" id="iconBuscarCnpj"></i> Buscar
+                                        </button>
+                                    </div>
+                                    <div id="cnpjFeedback" style="font-size:0.75rem;margin-top:3px;display:none;"></div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div id="cnpjInfo" style="font-size:0.78rem;display:none;"></div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Razão Social <span class="obrig">*</span></label>
+                                    <input type="text" class="form-control" id="razaoSocial" placeholder="Ex: Cliente Exemplo Ltda.">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Nome Fantasia</label>
+                                    <input type="text" class="form-control" id="nomeFantasia" placeholder="Ex: Exemplo Comércio">
+                                </div>
+                            </div>
+
+                            <div class="form-section-title"><i class="bi bi-geo-alt-fill"></i> Endereço</div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Logradouro</label>
+                                    <input type="text" class="form-control" id="logradouro" placeholder="Ex: Rua das Flores">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label">Número</label>
+                                    <input type="text" class="form-control" id="numero" placeholder="Ex: 123">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Complemento</label>
+                                    <input type="text" class="form-control" id="complemento" placeholder="Sala, bloco, etc.">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label class="form-label">CEP</label>
+                                    <input type="text" class="form-control" id="cep" placeholder="00000-000">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Bairro / Distrito</label>
+                                    <input type="text" class="form-control" id="bairro" placeholder="Ex: Centro">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Município</label>
+                                    <input type="text" class="form-control" id="municipio" placeholder="Ex: São Paulo">
+                                </div>
+                                <div class="col-md-1">
+                                    <label class="form-label">UF</label>
+                                    <input type="text" class="form-control" id="uf" placeholder="SP" maxlength="2" style="text-transform:uppercase;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CAMPOS COMUNS (CPF e CNPJ) -->
+                        <div class="row mb-3">
+                            <div class="col-md-6"><label class="form-label">Telefone <span class="obrig">*</span></label><input type="text" class="form-control" id="contatoCliente" placeholder="(99) 99999-9999"></div>
+                            <div class="col-md-6"><label class="form-label">E-mail <span style="text-transform:none;letter-spacing:0;font-size:0.72rem;color:var(--cinza-texto)">(opcional)</span></label><input type="email" class="form-control" id="emailCliente" placeholder="contato@cliente.com"></div>
+                        </div>
+                        <div class="row mb-3" id="rowEnderecoAdicionalCnpj">
+                            <div class="col-12"><label class="form-label">Endereço Adicional <span style="text-transform:none;letter-spacing:0;font-size:0.72rem;color:var(--cinza-texto)">(opcional)</span></label><input type="text" class="form-control" id="enderecoAdicional" placeholder="Endereço alternativo, se houver."></div>
+                        </div>
+                        <hr class="v-divider">
+                        <div class="d-flex justify-content-end gap-2">
+                            <button type="button" id="btnCancelarEdicao" class="btn-secondary-v" style="display:none;" onclick="cancelarEdicao()"><i class="bi bi-x-circle"></i> Cancelar</button>
+                            <button type="submit" id="btnSalvarCliente" class="btn-primary-v"><i class="bi bi-save-fill"></i> Salvar Cliente</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <p class="section-title">Clientes Cadastrados</p>
+            <div class="filter-bar">
+                <div style="flex:1;max-width:340px;">
+                    <input type="text" class="form-control" id="buscaCliente"
+                           placeholder="Buscar por nome ou CPF/CNPJ..."
+                           oninput="filtrarClientes(this.value)">
+                </div>
+            </div>
+            <div class="v-card">
+                <div id="pgClientesTop"></div>
+                <div class="v-card-body" style="padding:0;overflow-x:auto;">
+                    <table class="v-table">
+                        <thead><tr><th>Nome</th><th>CPF/CNPJ</th><th>Telefone</th><th>Endereço</th><th class="text-center">Ações</th></tr></thead>
+                        <tbody id="listaClientes"><tr><td colspan="5" class="text-center" style="color:var(--cinza-texto);padding:2rem;"><i class="bi bi-arrow-repeat me-2"></i>Carregando...</td></tr></tbody>
+                    </table>
+                </div>
+                <div id="pgClientesBottom"></div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+        </div><!-- /main-inner -->
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    
+    // ── THEME ─────────────────────────────────────────────────────────────
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        const icon = document.getElementById('themeIcon');
+        const btn  = document.getElementById('btnTheme');
+        if (!icon) return;
+        if (theme === 'light') { icon.className = 'bi bi-sun-fill'; if(btn) btn.style.color='#F5A623'; }
+        else                   { icon.className = 'bi bi-moon-fill'; if(btn) btn.style.color=''; }
+    }
+    function toggleTheme() {
+        const next = (document.documentElement.getAttribute('data-theme')||'dark') === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('valora_theme', next);
+        applyTheme(next);
+    }
+    applyTheme(localStorage.getItem('valora_theme') || 'dark');
+    // ─────────────────────────────────────────────────────────────────────
+
+    const AUTH_TOKEN = localStorage.getItem('auth_token') || '';
+    document.body.classList.add('role-' + (localStorage.getItem('user_role') || 'OPERADOR').toLowerCase());
+
+    // Exibe nome e perfil do usuário logado na navbar
+    (function() {
+        const nome = localStorage.getItem('user_nome') || '';
+        const role = localStorage.getItem('user_role') || 'OPERADOR';
+        const el = document.getElementById('userInfo');
+        if (el && nome) {
+            const lbl = role === 'ADMIN' ? '🔴 Admin' : '🟢 Operador';
+            el.textContent = nome + ' · ' + lbl;
+        }
+    })();
+    function sair(){ localStorage.removeItem('auth_token'); window.location.href='login.html'; }
+
+    // Aplica a máscara (44) 9 9948-5277 (celular) ou (44) 3344-5566 (fixo)
+    // enquanto o usuário digita. Detecta celular pelo 3o dígito (após o DDD)
+    // ser "9", para não mudar de formato no meio da digitação.
+    function formatarTelefone(raw) {
+        const v = raw.replace(/\D/g, '').slice(0, 11);
+        if (v.length <= 2) return v ? `(${v}` : '';
+        const ddd = v.slice(0, 2), resto = v.slice(2);
+        const ehCelular = resto[0] === '9';
+        if (ehCelular) {
+            const nono = resto.slice(0, 1), meio = resto.slice(1, 5), fim = resto.slice(5, 9);
+            let out = `(${ddd}) ${nono}`;
+            if (meio) out += ` ${meio}`;
+            if (fim) out += `-${fim}`;
+            return out;
+        }
+        const meio = resto.slice(0, 4), fim = resto.slice(4, 8);
+        let out = `(${ddd}) ${meio}`;
+        if (fim) out += `-${fim}`;
+        return out;
+    }
+    function aplicarMascaraTelefone(input) {
+        input.addEventListener('input', () => { input.value = formatarTelefone(input.value); });
+    }
+    aplicarMascaraTelefone(document.getElementById('contatoCliente'));
+
+    function showFeedback(message, type) {
+        const icons = { success:'check-circle-fill', warning:'exclamation-triangle-fill', danger:'x-circle-fill', info:'info-circle-fill' };
+        const el = document.createElement('div');
+        el.className = `alert alert-${type} d-flex align-items-start gap-3`;
+        el.setAttribute('role', 'alert');
+        el.innerHTML = `<i class="bi bi-${icons[type]||'info-circle-fill'}" style="font-size:1.1rem;margin-top:1px;"></i><div class="flex-grow-1">${message}</div><button type="button" class="btn-close" aria-label="Fechar"></button>`;
+        alertContainer.appendChild(el);
+        const remover = () => {
+            el.classList.add('toast-leaving');
+            setTimeout(() => { el.remove(); }, 200);
+        };
+        el.querySelector('.btn-close').addEventListener('click', remover);
+        setTimeout(remover, 5000);
+    }
+
+    // ── PAGINAÇÃO (10 itens por página, com setas e bolinhas navegáveis) ──
+    function criarPaginador(nome, { topId, bottomId, pageSize = 10, onRender }) {
+        let page = 1, items = [];
+        function render() {
+            const totalPages = Math.max(1, Math.ceil(items.length / pageSize));
+            if (page > totalPages) page = totalPages;
+            const inicio = (page - 1) * pageSize;
+            onRender(items.slice(inicio, inicio + pageSize));
+            let html = '';
+            if (totalPages > 1) {
+                let dots = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    dots += `<button class="pg-dot ${i===page?'active':''}" onclick="pgGoto_${nome}(${i})" title="Página ${i}"></button>`;
+                }
+                html = `<div class="v-pagination">
+                    <button class="pg-arrow" ${page===1?'disabled':''} onclick="pgGoto_${nome}(${page-1})" title="Anterior"><i class="bi bi-chevron-left"></i></button>
+                    <div class="pg-dots">${dots}</div>
+                    <button class="pg-arrow" ${page===totalPages?'disabled':''} onclick="pgGoto_${nome}(${page+1})" title="Próxima"><i class="bi bi-chevron-right"></i></button>
+                </div>`;
+            }
+            [topId, bottomId].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = html; });
+        }
+        window['pgGoto_' + nome] = (p) => {
+            const totalPages = Math.max(1, Math.ceil(items.length / pageSize));
+            page = Math.min(Math.max(1, p), totalPages);
+            render();
+        };
+        return { setItems(novosItens) { items = novosItens; page = 1; render(); } };
+    }
+
+    // Detecta automaticamente se esta rodando local ou em producao
+    const _BASE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+        ? 'http://localhost:8080' : 'https://valora-production-35b1.up.railway.app';
+    const API_URL = `${_BASE}/api/clientes`;
+    const frmCadastroCliente = document.getElementById('frmCadastroCliente');
+    const listaClientes      = document.getElementById('listaClientes');
+    const alertContainer     = document.getElementById('alertContainer');
+    const clienteIdInput     = document.getElementById('clienteId');
+    let enderecoOriginalEdicao = ''; // BUGFIX: guarda o endereco ja salvo durante a edicao
+    const btnSalvar          = document.getElementById('btnSalvarCliente');
+    const btnCancelar        = document.getElementById('btnCancelarEdicao');
+
+    function cancelarEdicao() {
+        frmCadastroCliente.reset(); clienteIdInput.value=''; enderecoOriginalEdicao='';
+        btnSalvar.innerHTML='<i class="bi bi-save-fill"></i> Salvar Cliente'; btnSalvar.className='btn-primary-v';
+        btnCancelar.style.display='none';
+        window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    // ── SELETOR PESSOA FÍSICA / JURÍDICA ──────────────────────────────────
+    function setTipo(tipo) {
+        const blocoCPF  = document.getElementById('blocoCPF');
+        const blocoCNPJ = document.getElementById('blocoCNPJ');
+        const rowEndAdicionalCnpj = document.getElementById('rowEnderecoAdicionalCnpj');
+
+        document.getElementById('lblTipoCPF').classList.toggle('selecionado',  tipo === 'CPF');
+        document.getElementById('lblTipoCNPJ').classList.toggle('selecionado', tipo === 'CNPJ');
+
+        if (tipo === 'CPF') {
+            blocoCPF.style.display  = 'block';
+            blocoCNPJ.style.display = 'none';
+            rowEndAdicionalCnpj.style.display = 'none';
+        } else {
+            blocoCPF.style.display  = 'none';
+            blocoCNPJ.style.display = 'block';
+            rowEndAdicionalCnpj.style.display = 'flex';
+        }
+    }
+
+    // Máscara simples ao digitar o CNPJ
+    function onCnpjInput(valor) {
+        const fb = document.getElementById('cnpjFeedback');
+        const digitos = valor.replace(/\D/g, '');
+        if (!digitos) { fb.style.display = 'none'; return; }
+        const valido = validarCNPJ(digitos);
+        fb.style.display = 'block';
+        if (digitos.length === 14) {
+            fb.style.color   = valido ? '#3ecf8e' : 'var(--vermelho)';
+            fb.textContent   = valido ? 'CNPJ válido ✓' : 'CNPJ inválido';
+        } else {
+            fb.style.display = 'none';
+        }
+    }
+    // ─────────────────────────────────────────────────────────────────────
+
+    // ── BUSCA CEP (ViaCEP) — preenche Endereço/Bairro/Município/UF do CPF ──
+    function onCepInput(valor) {
+        // Máscara simples: 00000-000
+        let v = valor.replace(/\D/g, '').substring(0, 8);
+        if (v.length > 5) v = v.substring(0, 5) + '-' + v.substring(5);
+        document.getElementById('cepCliente').value = v;
+
+        const digitos = v.replace(/\D/g, '');
+        const fb = document.getElementById('cepFeedback');
+        if (digitos.length === 8) {
+            buscarCEP(digitos);
+        } else {
+            fb.style.display = 'none';
+        }
+    }
+
+    async function buscarCEP(cep) {
+        const fb = document.getElementById('cepFeedback');
+        fb.style.display = 'block';
+        fb.style.color = 'var(--cinza-texto)';
+        fb.textContent = 'Buscando endereço...';
+        try {
+            const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+            const dados = await res.json();
+            if (dados.erro) {
+                fb.style.color = 'var(--vermelho)';
+                fb.textContent = 'CEP não encontrado.';
+                return;
+            }
+            document.getElementById('enderecoCliente').value = dados.logradouro || document.getElementById('enderecoCliente').value;
+            document.getElementById('bairroCliente').value    = dados.bairro || document.getElementById('bairroCliente').value;
+            document.getElementById('municipioCliente').value = dados.localidade || '';
+            document.getElementById('ufCliente').value        = dados.uf || '';
+            fb.style.color = '#3ecf8e';
+            fb.textContent = 'Endereço encontrado ✓';
+            // Se o logradouro veio vazio (CEP de zona rural/genérico), deixa o
+            // foco no campo Endereço para o usuário completar manualmente.
+            if (!dados.logradouro) document.getElementById('enderecoCliente').focus();
+        } catch {
+            fb.style.color = 'var(--vermelho)';
+            fb.textContent = 'Falha ao consultar o CEP. Preencha manualmente.';
+        }
+    }
+    // ─────────────────────────────────────────────────────────────────────
+    async function buscarCNPJ() {
+        const campo = document.getElementById('cnpjInput');
+        const cnpj  = campo.value.replace(/\D/g, '');
+
+        if (cnpj.length !== 14) {
+            showFeedback('Digite um CNPJ válido (14 dígitos) para buscar.', 'warning');
+            return;
+        }
+
+        const btn  = document.getElementById('btnBuscarCnpj');
+        const icon = document.getElementById('iconBuscarCnpj');
+        btn.disabled = true;
+        icon.className = 'bi bi-arrow-repeat';
+        icon.style.animation = 'spin 1s linear infinite';
+        document.getElementById('cnpjInfo').style.display = 'none';
+
+        try {
+            // Chama o backend como proxy (evita bloqueio de CORS da ReceitaWS)
+            const res = await fetch(`${_BASE}/api/cnpj/${cnpj}`, {
+                method: 'GET',
+                headers: { 'Authorization': AUTH_TOKEN, 'Accept': 'application/json' }
+            });
+
+            if (!res.ok) throw new Error('Erro na consulta');
+
+            const dados = await res.json();
+
+            if (dados.status === 'ERROR') {
+                showFeedback('CNPJ não encontrado na Receita Federal.', 'warning');
+                return;
+            }
+
+            // Preenche os campos detalhados de CNPJ
+            document.getElementById('razaoSocial').value  = dados.nome || '';
+            document.getElementById('nomeFantasia').value = dados.fantasia || '';
+            document.getElementById('logradouro').value   = dados.logradouro || '';
+            document.getElementById('numero').value       = dados.numero || '';
+            document.getElementById('complemento').value  = dados.complemento || '';
+            document.getElementById('cep').value           = dados.cep || '';
+            document.getElementById('bairro').value        = dados.bairro || '';
+            document.getElementById('municipio').value     = dados.municipio || '';
+            document.getElementById('uf').value             = dados.uf || '';
+
+            if (dados.email)    document.getElementById('emailCliente').value   = dados.email;
+            if (dados.telefone) document.getElementById('contatoCliente').value = formatarTelefone(dados.telefone);
+
+            const info = document.getElementById('cnpjInfo');
+            const situacao = dados.situacao || 'Desconhecida';
+            const cor = situacao === 'ATIVA' ? 'var(--verde)' : 'var(--amarelo)';
+            info.style.display = 'block';
+            info.style.color   = cor;
+            info.innerHTML     = `<i class="bi bi-check-circle-fill"></i> Dados preenchidos · Situação: <strong>${situacao}</strong>`;
+
+            showFeedback(`Dados do CNPJ <strong>${cnpj}</strong> preenchidos com sucesso!`, 'success');
+
+        } catch (err) {
+            showFeedback('Não foi possível consultar o CNPJ. Verifique sua conexão ou tente novamente em 1 minuto (limite: 3 consultas/min).', 'danger');
+        } finally {
+            btn.disabled = false;
+            icon.className = 'bi bi-search';
+            icon.style.animation = '';
+        }
+    }
+    // ─────────────────────────────────────────────────────────────────────
+
+    function validarCPF(cpf) {
+        cpf = cpf.replace(/\D/g,'');
+        if(cpf.length!==11||/^(\d)\1{10}$/.test(cpf))return false;
+        let s=0; for(let i=0;i<9;i++) s+=parseInt(cpf[i])*(10-i);
+        let r=s%11; let d1=r<2?0:11-r;
+        if(parseInt(cpf[9])!==d1)return false;
+        s=0; for(let i=0;i<10;i++) s+=parseInt(cpf[i])*(11-i);
+        r=s%11; let d2=r<2?0:11-r;
+        return parseInt(cpf[10])===d2;
+    }
+    function validarCNPJ(cnpj) {
+        cnpj = cnpj.replace(/\D/g,'');
+        if(cnpj.length!==14||/^(\d)\1{13}$/.test(cnpj))return false;
+        const calc=(n,arr)=>{let s=0;for(let i=0;i<arr.length;i++)s+=parseInt(n[i])*arr[i];let r=s%11;return r<2?0:11-r;};
+        const d1=calc(cnpj,[5,4,3,2,9,8,7,6,5,4,3,2]);
+        const d2=calc(cnpj,[6,5,4,3,2,9,8,7,6,5,4,3,2]);
+        return parseInt(cnpj[12])===d1&&parseInt(cnpj[13])===d2;
+    }
+
+    // Validação do CPF (bloco pessoa física)
+    document.getElementById('cpfCnpj').addEventListener('input', function(){
+        const fb = document.getElementById('cpfCnpjFeedback');
+        const digitos = this.value.replace(/\D/g, '');
+        if (!digitos) { fb.style.display = 'none'; this.style.borderColor = ''; return; }
+        if (digitos.length === 11) {
+            const valido = validarCPF(digitos);
+            fb.style.display = 'block';
+            fb.style.color = valido ? '#3ecf8e' : 'var(--vermelho)';
+            fb.textContent = valido ? 'CPF válido ✓' : 'CPF inválido';
+            this.style.borderColor = valido ? '#3ecf8e' : 'var(--vermelho)';
+        } else {
+            fb.style.display = 'none';
+            this.style.borderColor = '';
+        }
+    });
+
+    // ── MONTA OS DADOS A PARTIR DO TIPO SELECIONADO ───────────────────────
+    function obterTipoSelecionado() {
+        return document.querySelector('input[name="tipoPessoa"]:checked').value;
+    }
+
+    function montarDadosCliente() {
+        const tipo = obterTipoSelecionado();
+
+        if (tipo === 'CPF') {
+            return {
+                nome: document.getElementById('nomeCliente').value.trim(),
+                'cpf_cnpj': document.getElementById('cpfCnpj').value.trim() || null,
+                contato: document.getElementById('contatoCliente').value.trim(),
+                email: document.getElementById('emailCliente').value.trim(),
+                endereco: document.getElementById('enderecoCliente').value.trim(),
+                numero: document.getElementById('numeroCliente').value.trim(),
+                bairro: document.getElementById('bairroCliente').value.trim(),
+                cep: document.getElementById('cepCliente').value.trim(),
+                municipio: document.getElementById('municipioCliente').value.trim(),
+                uf: document.getElementById('ufCliente').value.trim(),
+                'data_nascimento': document.getElementById('dataNascimentoCliente').value || null,
+                'endereco_adicional': document.getElementById('enderecoAdicionalCpf').value.trim()
+            };
+        }
+
+        // CNPJ: monta o endereço completo a partir dos campos detalhados
+        const partes = [
+            document.getElementById('logradouro').value.trim(),
+            document.getElementById('numero').value.trim(),
+            document.getElementById('complemento').value.trim(),
+            document.getElementById('bairro').value.trim(),
+            document.getElementById('municipio').value.trim(),
+            document.getElementById('uf').value.trim(),
+            document.getElementById('cep').value.trim()
+        ].filter(Boolean);
+
+        const fantasia = document.getElementById('nomeFantasia').value.trim();
+        const razao    = document.getElementById('razaoSocial').value.trim();
+
+        // BUGFIX: se os campos detalhados estao vazios (ex: edicao sem reconsultar
+        // o CNPJ), mantem o endereco que ja estava salvo em vez de apagar.
+        const enderecoFinal = partes.length ? partes.join(', ') : enderecoOriginalEdicao;
+
+        return {
+            nome: fantasia ? `${razao} (${fantasia})` : razao,
+            'cpf_cnpj': document.getElementById('cnpjInput').value.trim(),
+            contato: document.getElementById('contatoCliente').value.trim(),
+            email: document.getElementById('emailCliente').value.trim(),
+            endereco: enderecoFinal,
+            'endereco_adicional': document.getElementById('enderecoAdicional').value.trim(),
+            logradouro: document.getElementById('logradouro').value.trim(),
+            numero: document.getElementById('numero').value.trim(),
+            complemento: document.getElementById('complemento').value.trim(),
+            bairro: document.getElementById('bairro').value.trim(),
+            municipio: document.getElementById('municipio').value.trim(),
+            uf: document.getElementById('uf').value.trim(),
+            cep: document.getElementById('cep').value.trim()
+        };
+    }
+    // ─────────────────────────────────────────────────────────────────────
+
+    async function salvarCliente(event) {
+        event.preventDefault();
+        const id  = clienteIdInput.value, isE = id !== '';
+        const tipo = obterTipoSelecionado();
+        const d = montarDadosCliente();
+
+        if (!d.nome) {
+            showFeedback(tipo === 'CPF' ? 'Preencha o <strong>Nome</strong>.' : 'Preencha a <strong>Razão Social</strong>.', 'warning');
+            return;
+        }
+        if (tipo === 'CPF') {
+            if (!d['cpf_cnpj'] || !validarCPF(d['cpf_cnpj'])) { showFeedback('CPF inválido ou não informado.', 'warning'); return; }
+            if (!d.cep)      { showFeedback('Preencha o <strong>CEP</strong>.', 'warning'); return; }
+            if (!d.endereco) { showFeedback('Preencha o <strong>Endereço</strong>.', 'warning'); return; }
+            if (!d.numero)   { showFeedback('Preencha o <strong>Número</strong>.', 'warning'); return; }
+            if (!d.bairro)   { showFeedback('Preencha o <strong>Bairro</strong>.', 'warning'); return; }
+            if (!d.contato)  { showFeedback('Preencha o <strong>Telefone</strong>.', 'warning'); return; }
+        }
+        if (tipo === 'CNPJ' && (!d['cpf_cnpj'] || !validarCNPJ(d['cpf_cnpj']))) {
+            showFeedback('CNPJ inválido ou não informado.', 'warning'); return;
+        }
+
+        try {
+            const r = await fetch(isE ? `${API_URL}/${id}` : API_URL, {
+                method: isE ? 'PUT' : 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': AUTH_TOKEN },
+                body: JSON.stringify(d)
+            });
+            if (r.ok) { showFeedback(`Cliente <strong>${d.nome}</strong> ${isE ? 'atualizado' : 'salvo'} com sucesso!`, 'success'); cancelarEdicao(); await carregarClientes(); }
+            else if (r.status === 401) showFeedback('Sua sessão expirou. Faça login novamente.', 'danger');
+            else if (r.status === 409) { const err = await r.text(); showFeedback(`Não foi possível salvar: ${err.substring(0,150)}`, 'warning'); }
+            else if (r.status === 403) showFeedback('Você não tem permissão para realizar esta ação.', 'danger');
+            else showFeedback('Não foi possível salvar o cliente. Verifique os dados e tente novamente.', 'danger');
+        } catch { showFeedback('Falha de conexão com o servidor. Verifique se o backend está rodando.', 'danger'); }
+    }
+
+    let clientesCache = [];
+    const paginadorClientes = criarPaginador('clientes', {
+        topId: 'pgClientesTop', bottomId: 'pgClientesBottom', pageSize: 10,
+        onRender: renderizarClientesPagina
+    });
+
+    function filtrarClientes(termo) {
+        const t = termo.trim().toLowerCase();
+        if (!t) { renderizarClientes(clientesCache); return; }
+        // BUGFIX: quando o termo digitado nao tem nenhum numero (ex: "joao"),
+        // t.replace(/\D/g,'') vira string vazia, e "x".includes("") e sempre
+        // true em JS - isso fazia TODO cliente passar pelo filtro de CPF,
+        // poluindo o resultado da busca por nome. So compara o CPF/CNPJ
+        // quando o termo digitado de fato contem algum numero.
+        const tNumeros = t.replace(/\D/g, '');
+        const filtrados = clientesCache.filter(c => {
+            const nomeContemTermo = (c.nome || '').toLowerCase().includes(t);
+            const cpfContemTermo  = tNumeros !== '' && (c['cpf_cnpj'] || '').replace(/\D/g, '').includes(tNumeros);
+            return nomeContemTermo || cpfContemTermo;
+        });
+        renderizarClientes(filtrados);
+    }
+
+    // Ordena por ordem alfabética e envia ao paginador (10 por página)
+    function renderizarClientes(clientes) {
+        const ordenados = [...clientes].sort((a, b) => (a.nome || '').localeCompare(b.nome || '', 'pt-BR'));
+        paginadorClientes.setItems(ordenados);
+    }
+
+    // Renderiza somente a página atual (chamado pelo paginador)
+    function renderizarClientesPagina(clientes) {
+        listaClientes.innerHTML = '';
+        if (!clientes.length) {
+            listaClientes.innerHTML = '<tr><td colspan="5" class="text-center" style="color:var(--cinza-texto);padding:2rem;">Nenhum cliente encontrado.</td></tr>';
+            return;
+        }
+        clientes.forEach(c => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td style="font-weight:500">${c.nome}</td><td style="color:var(--cinza-texto)">${c['cpf_cnpj']||'—'}</td><td style="color:var(--cinza-texto)">${formatarTelefone(c.contato||'')||'—'}</td><td style="color:var(--cinza-texto);font-size:0.82rem">${c.endereco||'—'}</td><td class="text-center"><button class="btn-action" onclick="editarCliente(${c.id})" title="Editar"><i class="bi bi-pencil"></i></button><button class="btn-action danger admin-only" onclick="excluirCliente(${c.id},'${c.nome.replace(/'/g,"\\'")}')"><i class="bi bi-trash"></i></button></td>`;
+            listaClientes.appendChild(tr);
+        });
+    }
+
+    async function carregarClientes() {
+        listaClientes.innerHTML='<tr><td colspan="5" class="text-center" style="color:var(--cinza-texto);padding:2rem;"><i class="bi bi-arrow-repeat me-2"></i>Buscando...</td></tr>';
+        try {
+            const r=await fetch(API_URL,{headers:{'Authorization':AUTH_TOKEN}});
+            if(!r.ok)throw new Error(r.status);
+            clientesCache = await r.json();
+            const buscaAtual = document.getElementById('buscaCliente').value;
+            buscaAtual ? filtrarClientes(buscaAtual) : renderizarClientes(clientesCache);
+        } catch(e){listaClientes.innerHTML=`<tr><td colspan="5" class="text-center" style="color:var(--vermelho);padding:2rem;">Falha na conexão. ${e}</td></tr>`;}
+    }
+
+    window.editarCliente = async function(id) {
+        try {
+            const r = await fetch(`${API_URL}/${id}`, { headers: { 'Authorization': AUTH_TOKEN } });
+            if (!r.ok) throw new Error();
+            const c = await r.json();
+            clienteIdInput.value = c.id;
+            enderecoOriginalEdicao = c.endereco || ''; // BUGFIX: fallback caso os campos detalhados fiquem vazios
+
+            // Detecta se é CPF (≤11 dígitos) ou CNPJ (14 dígitos) pelo doc salvo
+            const digitos = (c['cpf_cnpj'] || '').replace(/\D/g, '');
+            const tipo = digitos.length === 14 ? 'CNPJ' : 'CPF';
+            document.querySelector(`input[name="tipoPessoa"][value="${tipo}"]`).checked = true;
+            setTipo(tipo);
+
+            if (tipo === 'CPF') {
+                document.getElementById('nomeCliente').value = c.nome || '';
+                document.getElementById('cpfCnpj').value     = c['cpf_cnpj'] || '';
+                document.getElementById('enderecoCliente').value = c.endereco || '';
+                document.getElementById('numeroCliente').value   = c.numero || '';
+                document.getElementById('bairroCliente').value   = c.bairro || '';
+                document.getElementById('cepCliente').value       = c.cep || '';
+                document.getElementById('municipioCliente').value = c.municipio || '';
+                document.getElementById('ufCliente').value        = c.uf || '';
+                document.getElementById('dataNascimentoCliente').value = c['data_nascimento'] || '';
+                document.getElementById('enderecoAdicionalCpf').value  = c['endereco_adicional'] || '';
+            } else {
+                // Tenta separar "Razão Social (Nome Fantasia)" de volta nos 2 campos
+                const m = (c.nome || '').match(/^(.*)\s\((.+)\)$/);
+                document.getElementById('razaoSocial').value  = m ? m[1] : (c.nome || '');
+                document.getElementById('nomeFantasia').value = m ? m[2] : '';
+                document.getElementById('cnpjInput').value    = c['cpf_cnpj'] || '';
+                // Restaura os campos detalhados de endereço salvos no banco
+                document.getElementById('logradouro').value  = c.logradouro || '';
+                document.getElementById('numero').value      = c.numero || '';
+                document.getElementById('complemento').value = c.complemento || '';
+                document.getElementById('bairro').value      = c.bairro || '';
+                document.getElementById('municipio').value   = c.municipio || '';
+                document.getElementById('uf').value          = c.uf || '';
+                document.getElementById('cep').value         = c.cep || '';
+            }
+
+            document.getElementById('contatoCliente').value     = formatarTelefone(c.contato || '');
+            document.getElementById('emailCliente').value       = c.email || '';
+            if (tipo === 'CNPJ') {
+                document.getElementById('enderecoAdicional').value = c['endereco_adicional'] || '';
+            }
+
+            btnSalvar.innerHTML = '<i class="bi bi-arrow-repeat"></i> Atualizar Cliente';
+            btnSalvar.className = 'btn-success-v';
+            btnCancelar.style.display = 'inline-flex';
+            showFeedback(`Editando: <strong>${c.nome}</strong>`, 'info');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch { showFeedback('Erro ao carregar para edição.', 'danger'); }
+    };
+
+    window.excluirCliente = async function(id,nome) {
+        if(!confirm(`Excluir o cliente "${nome}"?`))return;
+        try{
+            const r=await fetch(`${API_URL}/${id}`,{method:'DELETE',headers:{'Authorization':AUTH_TOKEN}});
+            if(r.status===204||r.ok){showFeedback(`<strong>${nome}</strong> excluído!`,'success');if(clienteIdInput.value===String(id))cancelarEdicao();await carregarClientes();}
+            else if(r.status===409){const body=await r.json().catch(()=>null);showFeedback(body?.erro||`Não é possível excluir: <strong>${nome}</strong> já está vinculado a um ou mais lançamentos.`,'warning');}
+            else showFeedback(`Erro. Status:${r.status}`,'danger');
+        }catch{showFeedback('Falha na conexão.','danger');}
+    };
+
+    window.onload=()=>{frmCadastroCliente.addEventListener('submit',salvarCliente);carregarClientes();};
+</script>
+</body>
+</html>

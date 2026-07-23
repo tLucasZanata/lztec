@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prismatic-cactus-3a3502.netlify.app/sitemap.xml

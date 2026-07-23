@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários — LZTec</title>
+    <script>(function(){var t=localStorage.getItem('valora_theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+/* ── CSS VARIABLES — DARK (default) ── */
+:root {
+    --azul-vivo:       #1A6FFF;
+    --azul-meia-noite: #060E24;
+    --azul-profundo:   #091533;
+    --azul-card:       #0D1D40;
+    --azul-borda:      #1A3060;
+    --cinza-texto:     #8EA3C3;
+    --branco:          #EAF0FF;
+    --acento:          #00D4FF;
+    --verde:           #00DC82;
+    --amarelo:         #F5A623;
+    --vermelho:        #FF4D6A;
+}
+
+/* ── LIGHT MODE ── */
+html[data-theme="light"] {
+    --azul-meia-noite: #E8ECF2;
+    --azul-profundo:   #F2F4F8;
+    --azul-card:       #F7F8FC;
+    --azul-borda:      #D6E0F5;
+    --cinza-texto:     #5A7096;
+    --branco:          #1A2B4A;
+    --acento:          #0099CC;
+    --verde:           #00A65C;
+    --amarelo:         #C47A00;
+    --vermelho:        #D93055;
+}
+html[data-theme="light"] body          { background-color: #E8ECF2; color: #1A2B4A; }
+html[data-theme="light"] .navbar-custom{ background-color: #FFFFFF !important; border-bottom: 1px solid #D6E0F5; box-shadow: 0 1px 8px rgba(26,111,255,0.07); }
+html[data-theme="light"] .logo-text    { color: #1A2B4A; }
+html[data-theme="light"] .sidebar      { background-color: #F2F4F8; border-right: 1px solid #D6E0F5; }
+html[data-theme="light"] .sidebar-section-label { color: #A0B4D0; }
+html[data-theme="light"] .nav-link     { color: #5A7096 !important; }
+html[data-theme="light"] .nav-link:hover { background: rgba(26,111,255,0.06); color: #1A2B4A !important; }
+html[data-theme="light"] .nav-link.active-page { background: rgba(26,111,255,0.1) !important; color: #1A6FFF !important; }
+html[data-theme="light"] .main-content { background: #E8ECF2; }
+html[data-theme="light"] .v-card       { background: #F7F8FC; border-color: #D6E0F5; box-shadow: 0 2px 12px rgba(26,111,255,0.06); }
+html[data-theme="light"] .v-card-header{ border-bottom-color: #D6E0F5; }
+html[data-theme="light"] .v-card-header h5 { color: #1A2B4A; }
+html[data-theme="light"] .form-control,
+html[data-theme="light"] .form-select  { background: #ECEEF5 !important; border-color: #D6E0F5 !important; color: #1A2B4A !important; }
+html[data-theme="light"] .form-control::placeholder { color: #A0B4D0 !important; }
+html[data-theme="light"] .form-control[readonly]     { color: #A0B4D0 !important; background: #EEF3FF !important; }
+html[data-theme="light"] .form-select option         { background: #FFFFFF; color: #1A2B4A; }
+html[data-theme="light"] .input-group-text { background: rgba(26,111,255,0.07) !important; border-color: #D6E0F5 !important; }
+html[data-theme="light"] .form-label   { color: #5A7096; }
+html[data-theme="light"] .form-text    { color: #A0B4D0; }
+html[data-theme="light"] .form-section-title         { color: #5A7096; }
+html[data-theme="light"] .form-section-title::after  { background: #D6E0F5; }
+html[data-theme="light"] .v-table thead tr  { border-bottom-color: #D6E0F5; }
+html[data-theme="light"] .v-table thead th  { color: #5A7096; }
+html[data-theme="light"] .v-table tbody tr  { border-bottom-color: #EEF2FA; }
+html[data-theme="light"] .v-table tbody tr:hover { background: rgba(26,111,255,0.04); }
+html[data-theme="light"] .v-table tbody td  { color: #1A2B4A; }
+html[data-theme="light"] .v-table tfoot td  { color: #1A2B4A; border-top-color: #D6E0F5; background: #F6F9FF; }
+html[data-theme="light"] .badge-codigo      { background: rgba(26,111,255,0.08); color: #0A5ACC; border-color: rgba(10,90,204,0.2); }
+html[data-theme="light"] .badge-valor       { background: rgba(0,166,92,0.1); color: #00845A; border-color: rgba(0,166,92,0.25); }
+html[data-theme="light"] .badge-info        { background: rgba(0,153,204,0.1); color: #0077AA; border-color: rgba(0,153,204,0.25); }
+html[data-theme="light"] .badge-placa       { background: rgba(245,166,35,0.1); color: #7A5200; border: 1px solid rgba(245,166,35,0.4); }
+html[data-theme="light"] .badge-lucro       { color: #00845A; }
+html[data-theme="light"] .badge-prejuizo    { color: #D93055; }
+html[data-theme="light"] .btn-secondary-v   { border-color: #D6E0F5; color: #5A7096; }
+html[data-theme="light"] .btn-secondary-v:hover { border-color: #5A7096; color: #1A2B4A; }
+html[data-theme="light"] .btn-outline-add   { background: rgba(26,111,255,0.06); border-color: rgba(26,111,255,0.25); }
+html[data-theme="light"] .btn-action        { border-color: #D6E0F5; color: #5A7096; }
+html[data-theme="light"] .page-header h1    { color: #1A2B4A; }
+html[data-theme="light"] .page-header p     { color: #5A7096; }
+html[data-theme="light"] .page-header-icon  { background: rgba(26,111,255,0.1); }
+html[data-theme="light"] .section-title     { color: #5A7096; }
+html[data-theme="light"] #alertContainer .alert { background: #F7F8FC; border-color: #D6E0F5; color: #1A2B4A; }
+html[data-theme="light"] .v-divider         { border-top-color: #D6E0F5; }
+html[data-theme="light"] .total-box         { background: #ECEEF5; border-color: #D6E0F5; }
+html[data-theme="light"] .total-box .lbl    { color: #5A7096; }
+html[data-theme="light"] .total-box .horas  { color: #1A2B4A; }
+html[data-theme="light"] .filter-bar .form-control,
+html[data-theme="light"] .filter-bar .form-select { background: #FFFFFF !important; }
+html[data-theme="light"] .checkbox-container { background: #ECEEF5; border-color: #D6E0F5; }
+html[data-theme="light"] .checkbox-item label { color: #1A2B4A; }
+html[data-theme="light"] .km-total-box      { background: #ECEEF5; border-color: #D6E0F5; }
+html[data-theme="light"] .km-total-box .lbl { color: #5A7096; }
+html[data-theme="light"] .login-box         { background: #F7F8FC; border-color: #D6E0F5; }
+html[data-theme="light"] .login-box h2,
+html[data-theme="light"] .login-box p       { color: #1A2B4A; }
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ── BASE ── */
+body {
+    background-color: var(--azul-meia-noite);
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+}
+
+/* ── NAVBAR ── */
+.navbar-custom {
+    background-color: var(--azul-profundo);
+    border-bottom: 1px solid var(--azul-borda);
+    height: 60px; z-index: 1030;
+    padding: 0 1.5rem; position: fixed; width: 100%;
+    display: flex; align-items: center; justify-content: space-between;
+}
+.logo-wrapper   { display: flex; align-items: center; gap: 10px; }
+.logo-icon      { width: 34px; height: 34px; background: var(--azul-vivo); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.logo-icon svg  { width: 20px; height: 20px; fill: white; }
+.logo-icon i    { font-size: 1.05rem; color: white; }
+.logo-text      { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem; letter-spacing: 3px; color: white; }
+.logo-text span { color: var(--acento); }
+.navbar-right   { display: flex; align-items: center; gap: 8px; }
+.btn-sair {
+    background: transparent; border: 1px solid var(--azul-borda);
+    color: var(--cinza-texto); font-size: 0.8rem; padding: 6px 14px;
+    border-radius: 6px; font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s; display: flex; align-items: center; gap: 6px; cursor: pointer;
+}
+.btn-sair:hover { border-color: var(--azul-vivo); color: var(--branco); }
+.btn-theme {
+    background: transparent; border: 1px solid var(--azul-borda);
+    color: var(--cinza-texto); width: 36px; height: 36px;
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; cursor: pointer; transition: all 0.2s;
+}
+.btn-theme:hover { border-color: var(--azul-vivo); color: var(--branco); }
+
+/* ── SIDEBAR ── */
+.sidebar {
+    width: 240px; position: fixed; top: 60px; left: 0; bottom: 0;
+    background-color: var(--azul-profundo); border-right: 1px solid var(--azul-borda);
+    padding: 1.25rem 0; z-index: 1020; overflow-y: auto;
+}
+.sidebar-section-label {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: #3A5280;
+    padding: 0.75rem 1.25rem 0.4rem;
+}
+.nav-link {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 1.25rem; color: var(--cinza-texto) !important;
+    font-size: 0.875rem; font-weight: 400;
+    border-left: 3px solid transparent; transition: all 0.18s; text-decoration: none;
+}
+.nav-link:hover { color: var(--branco) !important; background: rgba(26,111,255,0.08); border-left-color: rgba(26,111,255,0.4); }
+.nav-link.active-page { color: white !important; background: rgba(26,111,255,0.15) !important; border-left: 3px solid var(--azul-vivo) !important; }
+.nav-link i { font-size: 1rem; width: 18px; text-align: center; }
+
+/* ── LAYOUT ── */
+.main-content { margin-left: 240px; padding-top: 60px; min-height: 100vh; background: var(--azul-meia-noite); }
+.main-inner   { padding: 2.5rem; }
+
+/* ── PAGE HEADER ── */
+.page-header  { display: flex; align-items: center; gap: 14px; margin-bottom: 2rem; }
+.page-header-icon { width: 46px; height: 46px; background: rgba(26,111,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--azul-vivo); font-size: 1.3rem; }
+.page-header h1 { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; margin: 0; line-height: 1; }
+.page-header p  { font-size: 0.8rem; color: var(--cinza-texto); margin: 4px 0 0; font-weight: 300; }
+
+/* ── SECTION TITLE ── */
+.section-title { font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--cinza-texto); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem; margin-top: 2rem; }
+
+/* ── ALERT ── */
+#alertContainer .alert { background: var(--azul-card); border-color: var(--azul-borda); color: var(--branco); border-radius: 10px; }
+#alertContainer .alert-success { border-left: 4px solid var(--verde); }
+#alertContainer .alert-warning { border-left: 4px solid var(--amarelo); }
+#alertContainer .alert-danger  { border-left: 4px solid var(--vermelho); }
+#alertContainer .alert-info    { border-left: 4px solid var(--acento); }
+#alertContainer .btn-close     { filter: invert(1) brightness(0.7); }
+
+/* ── CARD ── */
+.v-card        { background: var(--azul-card); border: 1px solid var(--azul-borda); border-radius: 14px; margin-bottom: 1.5rem; }
+.v-card-header { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--azul-borda); display: flex; align-items: center; justify-content: space-between; }
+.v-card-header h5 { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--branco); margin: 0; letter-spacing: 0.5px; }
+.v-card-header .section-icon { color: var(--azul-vivo); margin-right: 8px; }
+.v-card-body   { padding: 1.5rem; }
+
+/* ── FORM ── */
+.form-label { font-size: 0.72rem; font-weight: 500; color: var(--cinza-texto); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+.form-label .obrig { color: var(--vermelho); }
+.form-control, .form-select {
+    background: var(--azul-profundo) !important; border: 1px solid var(--azul-borda) !important;
+    color: var(--branco) !important; border-radius: 8px; font-size: 0.9rem; padding: 0.55rem 0.85rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--azul-vivo) !important; box-shadow: 0 0 0 3px rgba(26,111,255,0.15) !important; outline: none;
+}
+.form-control::placeholder { color: #3A5280 !important; }
+.form-control[readonly]    { color: #3A5280 !important; cursor: default; }
+.form-select option        { background: var(--azul-card); color: var(--branco); }
+.form-select option:disabled { color: #3A5280; }
+.form-text { font-size: 0.72rem; color: #3A5280; margin-top: 4px; }
+.input-group-text {
+    background: rgba(26,111,255,0.1) !important; border: 1px solid var(--azul-borda) !important;
+    color: var(--azul-vivo) !important; font-size: 0.85rem;
+}
+select[multiple] { min-height: 90px; }
+
+/* ── FORM SECTION TITLE ── */
+.form-section-title {
+    font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--cinza-texto);
+    margin: 1.5rem 0 1rem; display: flex; align-items: center; gap: 8px;
+}
+.form-section-title::after { content: ''; flex: 1; height: 1px; background: var(--azul-borda); }
+.form-section-title i { color: var(--azul-vivo); font-size: 0.9rem; }
+
+/* ── CHECKBOX CONTAINER ── */
+.checkbox-container {
+    background: var(--azul-profundo); border: 1px solid var(--azul-borda);
+    border-radius: 8px; padding: 1rem; max-height: 200px; overflow-y: auto;
+}
+.checkbox-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+.checkbox-item input[type="checkbox"] { accent-color: var(--azul-vivo); width: 15px; height: 15px; cursor: pointer; }
+.checkbox-item label { font-size: 0.875rem; color: var(--branco); cursor: pointer; margin: 0; }
+
+/* ── BUTTONS ── */
+.btn-primary-v {
+    background: var(--azul-vivo); border: none; color: white;
+    font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.9rem;
+    padding: 10px 24px; border-radius: 8px;
+    display: inline-flex; align-items: center; gap: 8px;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+}
+.btn-primary-v:hover { background: #1560e0; transform: translateY(-1px); }
+.btn-success-v {
+    background: rgba(0,220,130,0.15); border: 1px solid var(--verde); color: var(--verde);
+    font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.9rem;
+    padding: 10px 24px; border-radius: 8px;
+    display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: background 0.2s;
+}
+.btn-success-v:hover { background: rgba(0,220,130,0.25); }
+.btn-secondary-v {
+    background: transparent; border: 1px solid var(--azul-borda); color: var(--cinza-texto);
+    font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 0.9rem;
+    padding: 10px 20px; border-radius: 8px;
+    display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.18s;
+}
+.btn-secondary-v:hover { border-color: var(--cinza-texto); color: var(--branco); }
+.btn-outline-add {
+    background: rgba(26,111,255,0.08); border: 1px solid rgba(26,111,255,0.35); color: var(--azul-vivo);
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; padding: 8px 16px; border-radius: 8px;
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: all 0.18s; white-space: nowrap;
+}
+.btn-outline-add:hover { background: rgba(26,111,255,0.18); border-color: var(--azul-vivo); }
+.btn-pdf {
+    background: rgba(0,220,130,0.08); border: 1px solid rgba(0,220,130,0.35); color: var(--verde);
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; padding: 8px 16px; border-radius: 8px;
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: all 0.18s;
+}
+.btn-pdf:hover { background: rgba(0,220,130,0.18); border-color: var(--verde); }
+.btn-range {
+    background: transparent; border: 1px solid var(--azul-borda); color: var(--cinza-texto);
+    font-size: 0.78rem; padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: all 0.18s;
+    font-family: 'DM Sans', sans-serif;
+}
+.btn-range:hover { border-color: var(--azul-vivo); color: var(--branco); background: rgba(26,111,255,0.08); }
+
+/* ── TABLE ── */
+.v-table { width: 100%; border-collapse: collapse; }
+.v-table thead tr  { border-bottom: 1px solid var(--azul-borda); }
+.v-table thead th  { font-family: 'Syne', sans-serif; font-size: 0.62rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cinza-texto); padding: 0.75rem 1rem; white-space: nowrap; }
+.v-table tbody tr  { border-bottom: 1px solid rgba(26,48,96,0.5); transition: background 0.15s; }
+.v-table tbody tr:hover { background: rgba(26,111,255,0.05); }
+.v-table tbody td  { padding: 0.85rem 1rem; font-size: 0.875rem; color: var(--branco); vertical-align: middle; }
+.v-table tfoot td  { padding: 0.85rem 1rem; font-size: 0.85rem; color: var(--branco); font-weight: 600; border-top: 1px solid var(--azul-borda); background: rgba(26,48,96,0.2); }
+
+/* ── BADGES ── */
+.badge-codigo  { font-family: 'Courier New', monospace; font-size: 0.75rem; letter-spacing: 1px; background: rgba(26,111,255,0.12); color: var(--acento); border: 1px solid rgba(0,212,255,0.2); padding: 3px 8px; border-radius: 5px; }
+.badge-valor   { font-size: 0.75rem; background: rgba(0,220,130,0.1); color: var(--verde); border: 1px solid rgba(0,220,130,0.2); padding: 3px 10px; border-radius: 5px; }
+.badge-info    { font-size: 0.75rem; background: rgba(0,212,255,0.1); color: var(--acento); border: 1px solid rgba(0,212,255,0.2); padding: 3px 10px; border-radius: 5px; font-family: 'Courier New', monospace; }
+.badge-placa   { font-family: 'Courier New', monospace; font-size: 0.75rem; letter-spacing: 2px; background: rgba(245,166,35,0.12); color: var(--amarelo); border: 1px solid rgba(245,166,35,0.3); padding: 3px 10px; border-radius: 5px; }
+.badge-lucro   { font-size: 0.78rem; font-weight: 600; color: var(--verde); }
+.badge-prejuizo{ font-size: 0.78rem; font-weight: 600; color: var(--vermelho); }
+.badge-estoque-ok    { font-size: 0.75rem; background: rgba(0,220,130,0.12); color: var(--verde); border: 1px solid rgba(0,220,130,0.2); padding: 3px 10px; border-radius: 5px; }
+.badge-estoque-baixo { font-size: 0.75rem; background: rgba(245,166,35,0.12); color: var(--amarelo); border: 1px solid rgba(245,166,35,0.25); padding: 3px 10px; border-radius: 5px; }
+.badge-estoque-zero  { font-size: 0.75rem; background: rgba(255,77,106,0.12); color: var(--vermelho); border: 1px solid rgba(255,77,106,0.25); padding: 3px 10px; border-radius: 5px; }
+
+/* ── ACTION BUTTONS ── */
+.btn-action { width: 32px; height: 32px; border-radius: 7px; border: 1px solid var(--azul-borda); background: transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; color: var(--cinza-texto); transition: all 0.18s; margin: 0 2px; }
+.btn-action:hover { border-color: var(--azul-vivo); color: var(--azul-vivo); background: rgba(26,111,255,0.08); }
+.btn-action.danger:hover { border-color: var(--vermelho); color: var(--vermelho); background: rgba(255,77,106,0.08); }
+
+/* ── DIVIDERS ── */
+.v-divider { border: none; border-top: 1px solid var(--azul-borda); margin: 1.5rem 0; }
+
+/* ── TOTAL BOX ── */
+.total-box { background: var(--azul-profundo); border: 1px solid var(--azul-borda); border-radius: 10px; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem; }
+.total-box .lbl   { font-size: 0.78rem; color: var(--cinza-texto); text-transform: uppercase; letter-spacing: 1px; }
+.total-box .val   { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--verde); }
+.total-box .horas { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--branco); }
+
+/* ── KM TOTAL BOX ── */
+.km-total-box { background: var(--azul-profundo); border: 1px solid var(--azul-borda); border-radius: 8px; padding: 0.6rem 1rem; display: flex; align-items: center; gap: 8px; }
+.km-total-box .lbl { font-size: 0.7rem; color: var(--cinza-texto); text-transform: uppercase; letter-spacing: 1px; }
+.km-total-box .val { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--acento); }
+
+/* ── FILTER BAR ── */
+.filter-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; align-items: flex-end; }
+.filter-bar .form-control,
+.filter-bar .form-select { max-width: 260px; }
+
+/* ── PROD MINI TABLE ── */
+.prod-table { width: 100%; border-collapse: collapse; margin-top: 0.75rem; }
+.prod-table th  { font-family: 'Syne', sans-serif; font-size: 0.62rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cinza-texto); padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--azul-borda); }
+.prod-table td  { padding: 0.65rem 0.75rem; font-size: 0.85rem; border-bottom: 1px solid rgba(26,48,96,0.4); vertical-align: middle; color: var(--branco); }
+.prod-table tfoot td { border-top: 1px solid var(--azul-borda); border-bottom: none; font-weight: 600; color: var(--branco); }
+
+/* ── LOGIN SPECIAL ── */
+.login-wrapper { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.login-box { width: 100%; max-width: 420px; background: var(--azul-card); border: 1px solid var(--azul-borda); border-radius: 20px; overflow: hidden; }
+.login-header { background: linear-gradient(135deg, var(--azul-profundo) 0%, rgba(26,111,255,0.2) 100%); padding: 2.5rem 2rem; text-align: center; border-bottom: 1px solid var(--azul-borda); }
+.login-badge  { width: 64px; height: 64px; background: linear-gradient(135deg, var(--azul-vivo), var(--acento)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 0 30px rgba(26,111,255,0.3); }
+.login-badge svg { width: 34px; height: 34px; fill: white; }
+.login-nome   { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; letter-spacing: 4px; color: white; }
+.login-nome span { color: var(--acento); }
+.login-sub    { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza-texto); margin-top: 4px; }
+.login-body   { padding: 2rem; }
+.login-footer { padding: 0.85rem 2rem; border-top: 1px solid var(--azul-borda); text-align: center; font-size: 0.72rem; color: var(--cinza-texto); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 992px) {
+    .sidebar      { display: none !important; }
+    .main-content { margin-left: 0; }
+}
+/* ── RESPONSIVO MOBILE (heurística: flexibilidade de uso em qualquer dispositivo) ── */
+@media (max-width: 768px) {
+    .main-inner { padding: 1.25rem; }
+    .page-header { flex-wrap: wrap; }
+    .page-header h1 { font-size: 1.2rem; }
+    .v-card-body { padding: 1rem; }
+    .row > [class*="col-"] { margin-bottom: 0.5rem; }
+    .filter-bar { flex-direction: column; align-items: stretch; }
+    .filter-bar .form-control, .filter-bar .form-select { max-width: 100%; }
+    .v-table { font-size: 0.78rem; }
+    .v-table thead th, .v-table tbody td { padding: 0.5rem 0.5rem; }
+    .d-flex.justify-content-end { flex-wrap: wrap; }
+    .btn-primary-v, .btn-secondary-v, .btn-success-v { width: 100%; justify-content: center; }
+}
+@media (max-width: 480px) {
+    .navbar-custom { padding: 0 0.75rem; }
+    .logo-text { font-size: 1.05rem; letter-spacing: 1.5px; }
+    .main-inner { padding: 0.85rem; }
+    .v-table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+
+
+/* ── BADGES DE ROLE (especifico desta tela) ── */
+.badge-role-admin {
+    background: rgba(255,77,106,0.15); color: #FF4D6A;
+    border: 1px solid rgba(255,77,106,0.3); border-radius: 20px;
+    padding: 2px 10px; font-size: 0.72rem; font-weight: 700;
+}
+.badge-role-operador {
+    background: rgba(0,220,130,0.12); color: #00DC82;
+    border: 1px solid rgba(0,220,130,0.3); border-radius: 20px;
+    padding: 2px 10px; font-size: 0.72rem; font-weight: 700;
+}
+
+/* ── RBAC ── */
+.admin-only { display: none !important; }
+body.role-admin .admin-only { display: inline-flex !important; }
+body.role-admin .admin-only-block { display: block !important; }
+.admin-only-block { display: none !important; }
+
+    </style>
+</head>
+<body class="role-admin">
+<script>
+    const token = localStorage.getItem('auth_token');
+    const role  = localStorage.getItem('user_role');
+    if (!token) window.location.href = 'login.html';
+    if (role !== 'ADMIN') { alert('Acesso restrito. Apenas administradores.'); window.location.href = 'dashboard.html'; }
+</script>
+
+<nav class="navbar-custom">
+    <a class="text-decoration-none" href="dashboard.html">
+        <div class="logo-wrapper">
+            <div class="logo-icon"><i class="bi bi-cart-fill"></i></div>
+            <span class="logo-text">LZ<span>Tec</span></span>
+        </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+        <span id="userInfo" style="font-size:0.78rem;color:var(--cinza-texto);margin-right:4px;"></span>
+        <button class="btn-theme" id="btnTheme" onclick="toggleTheme()"><i class="bi bi-moon-fill" id="themeIcon"></i></button>
+        <button class="btn-sair" onclick="sair()"><i class="bi bi-box-arrow-right"></i> Sair</button>
+    </div>
+</nav>
+
+<div class="d-flex">
+    <div class="sidebar d-none d-lg-block">
+        <nav class="nav flex-column">
+            <p class="sidebar-section-label">Geral</p>
+            <a class="nav-link" href="dashboard.html"><i class="bi bi-house-door-fill"></i> Início</a>
+            <a class="nav-link" href="aniversariantes.html"><i class="bi bi-gift-fill"></i> Aniversariantes</a>
+
+            <p class="sidebar-section-label">Cadastros</p>
+            <a class="nav-link" href="cadastro-cliente.html"><i class="bi bi-person-vcard-fill"></i> Cliente</a>
+            <a class="nav-link" href="cadastro-produto.html"><i class="bi bi-box-fill"></i> Produto / Estoque</a>
+
+            <p class="sidebar-section-label">Movimentos</p>
+            <a class="nav-link" href="vendas.html"><i class="bi bi-cart-fill"></i> Vendas</a>
+
+            <p class="sidebar-section-label">Relatórios</p>
+            <a class="nav-link" href="relatorio-vendas-pagas.html"><i class="bi bi-file-earmark-bar-graph-fill"></i> Vendas Pagas</a>
+            <a class="nav-link" href="relatorio-vendas-pendentes.html"><i class="bi bi-hourglass-split"></i> Vendas Pendentes</a>
+
+            <p class="sidebar-section-label admin-only-block">Administração</p>
+            <a class="nav-link admin-only active-page" href="gerenciar-usuarios.html"><i class="bi bi-people-fill"></i> Usuários</a>
+        </nav>
+    </div>
+
+    <main class="main-content flex-grow-1">
+        <div class="main-inner">
+            <div class="page-header">
+                <div class="page-header-icon"><i class="bi bi-people-fill"></i></div>
+                <div>
+                    <h1>Gerenciar Usuários</h1>
+                    <p>Crie e gerencie os acessos ao sistema</p>
+                </div>
+            </div>
+
+            <div id="alertContainer" class="mb-4" style="display:none;"></div>
+
+            <!-- FORM -->
+            <div class="v-card">
+                <div class="v-card-header">
+                    <h5><i class="bi bi-person-plus-fill section-icon"></i><span id="formTitulo">Novo Usuário</span></h5>
+                </div>
+                <div class="v-card-body">
+                    <form id="frmUsuario">
+                        <input type="hidden" id="usuarioIdInput">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Nome de usuário <span class="obrig">*</span></label>
+                                <input type="text" class="form-control" id="uNome" placeholder="Login do usuário" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="uEmail" placeholder="email@exemplo.com">
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Perfil <span class="obrig">*</span></label>
+                                <select class="form-select" id="uRole" required>
+                                    <option value="OPERADOR">Operador</option>
+                                    <option value="ADMIN">Admin</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Senha <span class="obrig" id="senhaObrig">*</span></label>
+                                <input type="password" class="form-control" id="uSenha" placeholder="Mín. 6 caracteres">
+                                <div class="form-text" id="senhaDica">Deixe vazio para não alterar (edição)</div>
+                            </div>
+                        </div>
+                        <hr class="v-divider">
+                        <div class="d-flex justify-content-end gap-2">
+                            <button type="button" id="btnCancelar" class="btn-secondary-v" style="display:none;" onclick="cancelar()">
+                                <i class="bi bi-x-circle"></i> Cancelar
+                            </button>
+                            <button type="submit" class="btn-primary-v">
+                                <i class="bi bi-check-circle-fill"></i> <span id="btnTxt">Criar Usuário</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- LISTA -->
+            <p class="section-title">Usuários Cadastrados</p>
+            <div class="v-card">
+                <div class="v-card-body" style="padding:0;overflow-x:auto;">
+                    <table class="v-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th class="text-center">Perfil</th>
+                                <th class="text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaUsuarios">
+                            <tr><td colspan="4" style="text-align:center;padding:2rem;color:var(--cinza-texto);">Carregando…</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- REQUISITO BANCA: auditoria - quem logou e quem alterou o que no sistema -->
+            <p class="section-title">Logs de Auditoria</p>
+            <div class="v-card">
+                <div class="v-card-header">
+                    <h5><i class="bi bi-clock-history section-icon"></i>Histórico de Acessos e Alterações</h5>
+                </div>
+                <div class="v-card-body">
+                    <div class="filter-bar">
+                        <div>
+                            <label class="form-label">Usuário</label>
+                            <select class="form-select" id="audFiltroUsuario">
+                                <option value="">Todos</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Ação</label>
+                            <select class="form-select" id="audFiltroAcao">
+                                <option value="">Todas</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Entidade</label>
+                            <select class="form-select" id="audFiltroEntidade">
+                                <option value="">Todas</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">De</label>
+                            <input type="date" class="form-control" id="audFiltroInicio">
+                        </div>
+                        <div>
+                            <label class="form-label">Até</label>
+                            <input type="date" class="form-control" id="audFiltroFim">
+                        </div>
+                        <div>
+                            <button type="button" class="btn-primary-v" id="btnAudFiltrar">
+                                <i class="bi bi-funnel-fill"></i> Filtrar
+                            </button>
+                        </div>
+                        <div>
+                            <button type="button" class="btn-secondary-v" id="btnAudLimpar">
+                                <i class="bi bi-x-circle"></i> Limpar Filtros
+                            </button>
+                        </div>
+                    </div>
+
+                    <div style="overflow-x:auto;">
+                        <table class="v-table">
+                            <thead>
+                                <tr>
+                                    <th>Data/Hora</th>
+                                    <th>Usuário</th>
+                                    <th>Ação</th>
+                                    <th>Entidade</th>
+                                    <th>Registro</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listaAuditoria">
+                                <tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--cinza-texto);">Carregando…</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center" style="margin-top:1rem;">
+                        <span class="form-text" id="audPaginaInfo"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Detecta automaticamente se esta rodando local ou em producao
+    const _BASE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+        ? 'http://localhost:8080' : 'https://valora-production-35b1.up.railway.app';
+    const API_URL   = `${_BASE}/api/usuarios`;
+    const AUTH_TOKEN = localStorage.getItem('auth_token') || '';
+
+    function applyTheme(t) {
+        document.documentElement.setAttribute('data-theme', t);
+        const icon = document.getElementById('themeIcon');
+        if (icon) icon.className = t === 'light' ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+        const btn = document.getElementById('btnTheme');
+        if (btn) btn.style.color = t === 'light' ? '#F5A623' : '';
+    }
+    function toggleTheme() {
+        const next = (document.documentElement.getAttribute('data-theme')||'dark') === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('valora_theme', next); applyTheme(next);
+    }
+    applyTheme(localStorage.getItem('valora_theme') || 'dark');
+
+    function sair() {
+        localStorage.removeItem('auth_token');
+        localStorage.removeItem('user_role');
+        localStorage.removeItem('user_nome');
+        window.location.href = 'login.html';
+    }
+
+    function showFeedback(msg, type = 'danger') {
+        const icons = { success:'check-circle-fill', warning:'exclamation-triangle-fill', danger:'x-circle-fill' };
+        const ac = document.getElementById('alertContainer');
+        ac.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show d-flex align-items-start gap-3"><i class="bi bi-${icons[type]}" style="font-size:1.1rem;margin-top:1px;"></i><div class="flex-grow-1">${msg}</div><button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>`;
+        ac.style.display = 'block';
+        ac.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    }
+
+    async function carregarUsuarios() {
+        const tbody = document.getElementById('listaUsuarios');
+        try {
+            const r = await fetch(API_URL, { headers: { 'Authorization': AUTH_TOKEN } });
+            if (!r.ok) throw new Error();
+            const lista = await r.json();
+            tbody.innerHTML = '';
+            if (!lista.length) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:var(--cinza-texto);">Nenhum usuário cadastrado.</td></tr>'; return; }
+            const meNome = localStorage.getItem('user_nome');
+            lista.forEach(u => {
+                const badge = u.role === 'ADMIN'
+                    ? '<span class="badge-role-admin">🔴 Admin</span>'
+                    : '<span class="badge-role-operador">🟢 Operador</span>';
+                const ehEu = u.nome === meNome ? '<span style="font-size:0.7rem;color:var(--cinza-texto);"> (você)</span>' : '';
+                const podeDel = u.nome !== meNome; // não pode excluir a si mesmo
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="font-weight:500">${u.nome}${ehEu}</td>
+                    <td style="color:var(--cinza-texto)">${u.email || '—'}</td>
+                    <td class="text-center">${badge}</td>
+                    <td class="text-center">
+                        <button class="btn-action" onclick="editarUsuario(${u.id},'${u.nome.replace(/'/g,"\\'")}','${(u.email||'').replace(/'/g,"\\'")}','${u.role}')" title="Editar"><i class="bi bi-pencil"></i></button>
+                        ${podeDel ? `<button class="btn-action danger" onclick="excluirUsuario(${u.id},'${u.nome.replace(/'/g,"\\'")}')" title="Excluir"><i class="bi bi-trash"></i></button>` : ''}
+                    </td>`;
+                tbody.appendChild(tr);
+            });
+        } catch { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:var(--vermelho);">Falha ao carregar usuários.</td></tr>'; }
+    }
+
+    function editarUsuario(id, nome, email, role) {
+        document.getElementById('usuarioIdInput').value = id;
+        document.getElementById('uNome').value  = nome;
+        document.getElementById('uEmail').value = email;
+        document.getElementById('uRole').value  = role;
+        document.getElementById('uSenha').value = '';
+        document.getElementById('formTitulo').textContent = 'Editando: ' + nome;
+        document.getElementById('btnTxt').textContent = 'Salvar Alterações';
+        document.getElementById('btnCancelar').style.display = 'inline-flex';
+        document.getElementById('senhaObrig').style.display = 'none';
+        document.getElementById('senhaDica').style.display = 'block';
+        document.getElementById('frmUsuario').scrollIntoView({ behavior:'smooth' });
+    }
+
+    function cancelar() {
+        document.getElementById('frmUsuario').reset();
+        document.getElementById('usuarioIdInput').value = '';
+        document.getElementById('formTitulo').textContent = 'Novo Usuário';
+        document.getElementById('btnTxt').textContent = 'Criar Usuário';
+        document.getElementById('btnCancelar').style.display = 'none';
+        document.getElementById('senhaObrig').style.display = '';
+        document.getElementById('senhaDica').style.display = 'none';
+    }
+
+    async function excluirUsuario(id, nome) {
+        if (!confirm(`Excluir o usuário "${nome}"? Esta ação não pode ser desfeita.`)) return;
+        try {
+            const r = await fetch(`${API_URL}/${id}`, { method:'DELETE', headers:{ 'Authorization': AUTH_TOKEN } });
+            if (r.ok || r.status === 204) { showFeedback(`Usuário "${nome}" excluído.`, 'success'); carregarUsuarios(); }
+            else showFeedback('Erro ao excluir usuário.', 'danger');
+        } catch { showFeedback('Falha na conexão.', 'danger'); }
+    }
+
+    document.getElementById('frmUsuario').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id     = document.getElementById('usuarioIdInput').value;
+        const isEdit = id !== '';
+        const nome   = document.getElementById('uNome').value.trim();
+        const email  = document.getElementById('uEmail').value.trim();
+        const role   = document.getElementById('uRole').value;
+        const senha  = document.getElementById('uSenha').value;
+
+        if (!isEdit && senha.length < 6) { showFeedback('A senha deve ter pelo menos 6 caracteres.', 'warning'); return; }
+
+        const body = isEdit
+            ? { nome, email, role }
+            : { nome, email, senha, role };
+
+        try {
+            const r = await fetch(isEdit ? `${API_URL}/${id}` : API_URL, {
+                method: isEdit ? 'PUT' : 'POST',
+                headers: { 'Content-Type':'application/json', 'Authorization': AUTH_TOKEN },
+                body: JSON.stringify(body)
+            });
+            if (r.ok || r.status === 201) {
+                showFeedback(isEdit ? `Usuário "${nome}" atualizado!` : `Usuário "${nome}" criado com sucesso!`, 'success');
+                cancelar();
+                carregarUsuarios();
+            } else {
+                const txt = await r.text();
+                showFeedback('Erro: ' + txt, 'danger');
+            }
+        } catch { showFeedback('Falha na conexão.', 'danger'); }
+    });
+
+    // ── REQUISITO BANCA: auditoria, registro e controle de logs do sistema ──
+    const API_URL_AUDITORIA = `${_BASE}/api/auditoria`;
+    let audPaginaAtual = 0;
+    const AUD_TAMANHO_PAGINA = 50;
+
+    const LABELS_ACAO = {
+        CRIAR: '🟢 Criar', EDITAR: '🟡 Editar', EXCLUIR: '🔴 Excluir',
+        ALTERAR_STATUS: '🔵 Alterar Status', LOGIN: '🔑 Login', LOGIN_FALHOU: '⛔ Login Falhou'
+    };
+
+    async function carregarFiltrosAuditoria() {
+        try {
+            const [usuariosRes, acoesRes, entidadesRes] = await Promise.all([
+                fetch(API_URL, { headers: { 'Authorization': AUTH_TOKEN } }),
+                fetch(`${API_URL_AUDITORIA}/acoes`, { headers: { 'Authorization': AUTH_TOKEN } }),
+                fetch(`${API_URL_AUDITORIA}/entidades`, { headers: { 'Authorization': AUTH_TOKEN } })
+            ]);
+            if (usuariosRes.ok) {
+                const usuarios = await usuariosRes.json();
+                const sel = document.getElementById('audFiltroUsuario');
+                usuarios.forEach(u => {
+                    const o = document.createElement('option');
+                    o.value = u.nome; o.textContent = u.nome;
+                    sel.appendChild(o);
+                });
+            }
+            if (acoesRes.ok) {
+                const acoes = await acoesRes.json();
+                const sel = document.getElementById('audFiltroAcao');
+                acoes.forEach(a => {
+                    const o = document.createElement('option');
+                    o.value = a; o.textContent = LABELS_ACAO[a] || a;
+                    sel.appendChild(o);
+                });
+            }
+            if (entidadesRes.ok) {
+                const entidades = await entidadesRes.json();
+                const sel = document.getElementById('audFiltroEntidade');
+                entidades.forEach(en => {
+                    const o = document.createElement('option');
+                    o.value = en; o.textContent = en;
+                    sel.appendChild(o);
+                });
+            }
+        } catch { /* filtros são opcionais; se falhar, a busca ainda funciona sem eles */ }
+    }
+
+    function montarQueryAuditoria() {
+        const params = new URLSearchParams();
+        const usuario   = document.getElementById('audFiltroUsuario').value;
+        const acao      = document.getElementById('audFiltroAcao').value;
+        const entidade  = document.getElementById('audFiltroEntidade').value;
+        const inicio    = document.getElementById('audFiltroInicio').value;
+        const fim       = document.getElementById('audFiltroFim').value;
+        if (usuario)  params.set('usuario', usuario);
+        if (acao)     params.set('acao', acao);
+        if (entidade) params.set('entidade', entidade);
+        if (inicio)   params.set('inicio', inicio);
+        if (fim)      params.set('fim', fim);
+        params.set('page', audPaginaAtual);
+        params.set('size', AUD_TAMANHO_PAGINA);
+        // Ordena do log mais recente pro mais antigo (topo = ultimo acontecido)
+        params.set('sort', 'dataHora,desc');
+        return params.toString();
+    }
+
+    async function carregarAuditoria() {
+        const tbody = document.getElementById('listaAuditoria');
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--cinza-texto);">Carregando…</td></tr>';
+        try {
+            const r = await fetch(`${API_URL_AUDITORIA}?${montarQueryAuditoria()}`, { headers: { 'Authorization': AUTH_TOKEN } });
+            if (!r.ok) throw new Error();
+            const pagina = await r.json();
+            const logs = pagina.content || [];
+            tbody.innerHTML = '';
+            if (!logs.length) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--cinza-texto);">Nenhum registro encontrado.</td></tr>';
+            } else {
+                logs.forEach(log => {
+                    // O backend serializa LocalDateTime como array UTC [ano,mes,dia,hora,min,seg].
+                    // Date.UTC() constrói em UTC pra depois o navegador converter pro timezone
+                    // local do usuário corretamente (ex: UTC -3 = horário de Brasília).
+                    const dataFmt = Array.isArray(log.dataHora)
+                        ? new Date(Date.UTC(
+                            log.dataHora[0],
+                            log.dataHora[1] - 1,
+                            log.dataHora[2],
+                            log.dataHora[3] || 0,
+                            log.dataHora[4] || 0,
+                            log.dataHora[5] || 0
+                          )).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
+                        : new Date(log.dataHora).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td style="color:var(--cinza-texto);font-size:0.82rem;white-space:nowrap;">${dataFmt}</td>
+                        <td style="font-weight:500">${log.usuario}</td>
+                        <td>${LABELS_ACAO[log.acao] || log.acao}</td>
+                        <td><span class="badge-info">${log.entidade}</span></td>
+                        <td style="color:var(--cinza-texto)">${log.entidadeId || '—'}</td>`;
+                    tbody.appendChild(tr);
+                });
+            }
+            const totalPaginas = pagina.totalPages || 1;
+            document.getElementById('audPaginaInfo').textContent =
+                `Página ${audPaginaAtual + 1} de ${totalPaginas} · ${pagina.totalElements || 0} registro(s)`;
+            // Botões de Anterior/Próxima foram removidos da tela; o uso de
+            // optional chaining evita erro caso eles nao existam no HTML.
+            const btnAnt = document.getElementById('btnAudAnterior');
+            const btnPrx = document.getElementById('btnAudProxima');
+            if (btnAnt) btnAnt.disabled = audPaginaAtual <= 0;
+            if (btnPrx) btnPrx.disabled = audPaginaAtual + 1 >= totalPaginas;
+        } catch {
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--vermelho);">Falha ao carregar os logs de auditoria.</td></tr>';
+        }
+    }
+
+    document.getElementById('btnAudFiltrar').addEventListener('click', () => { audPaginaAtual = 0; carregarAuditoria(); });
+    document.getElementById('btnAudLimpar').addEventListener('click', () => {
+        const selUsuario  = document.getElementById('audFiltroUsuario');
+        const selAcao     = document.getElementById('audFiltroAcao');
+        const selEntidade = document.getElementById('audFiltroEntidade');
+        selUsuario.selectedIndex  = 0;
+        selAcao.selectedIndex     = 0;
+        selEntidade.selectedIndex = 0;
+        document.getElementById('audFiltroInicio').value = '';
+        document.getElementById('audFiltroFim').value = '';
+        audPaginaAtual = 0;
+        carregarAuditoria();
+    });
+    document.getElementById('btnAudAnterior')?.addEventListener('click', () => { if (audPaginaAtual > 0) { audPaginaAtual--; carregarAuditoria(); } });
+    document.getElementById('btnAudProxima')?.addEventListener('click', () => { audPaginaAtual++; carregarAuditoria(); });
+
+    window.onload = () => {
+        const nome = localStorage.getItem('user_nome') || '';
+        const uiEl = document.getElementById('userInfo');
+        if (uiEl && nome) uiEl.textContent = nome + ' · 🔴 Admin';
+        carregarUsuarios();
+        carregarFiltrosAuditoria();
+        carregarAuditoria();
+    };
+</script>
+</body>
+</html>
