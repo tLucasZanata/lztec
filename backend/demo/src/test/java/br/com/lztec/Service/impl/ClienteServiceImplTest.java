@@ -43,7 +43,7 @@ class ClienteServiceImplTest {
     void setUp() {
         clienteExistente = new Cliente(
                 "Rafael Souza", "123.456.789-00", "rafael@email.com",
-                "(44) 99999-0000", "Rua A, 100", "CAD-001", null
+                "(44) 99999-0000", "Rua A, 100", null
         );
         clienteExistente.setId(7);
     }
@@ -59,7 +59,7 @@ class ClienteServiceImplTest {
         @DisplayName("Deve salvar um novo cliente delegando diretamente ao repositório")
         void deveSalvarNovoCliente() {
             Cliente novo = new Cliente("Maria Lima", "987.654.321-00", "maria@email.com",
-                    "(44) 98888-1111", "Rua B, 200", null, null);
+                    "(44) 98888-1111", "Rua B, 200", null);
 
             when(clienteRepository.save(novo)).thenReturn(novo);
 
@@ -86,7 +86,7 @@ class ClienteServiceImplTest {
 
             Cliente detalhes = new Cliente(
                     "Rafael Souza Jr.", "111.222.333-44", "rafael.jr@email.com",
-                    "(44) 97777-2222", "Rua Nova, 500", "CAD-099", "Sala 12"
+                    "(44) 97777-2222", "Rua Nova, 500", "Sala 12"
             );
 
             Cliente atualizado = service.update(7, detalhes);
@@ -96,7 +96,6 @@ class ClienteServiceImplTest {
             assertThat(atualizado.getEmail()).isEqualTo("rafael.jr@email.com");
             assertThat(atualizado.getContato()).isEqualTo("(44) 97777-2222");
             assertThat(atualizado.getEndereco()).isEqualTo("Rua Nova, 500");
-            assertThat(atualizado.getCadPro()).isEqualTo("CAD-099");
             assertThat(atualizado.getEnderecoAdicional()).isEqualTo("Sala 12");
         }
 
@@ -107,7 +106,7 @@ class ClienteServiceImplTest {
             when(clienteRepository.save(any(Cliente.class)))
                     .thenAnswer(invocation -> invocation.getArgument(0));
 
-            Cliente detalhes = new Cliente("Nome Alterado", null, null, null, null, null, null);
+            Cliente detalhes = new Cliente("Nome Alterado", null, null, null, null, null);
 
             Cliente atualizado = service.update(7, detalhes);
 
@@ -154,7 +153,7 @@ class ClienteServiceImplTest {
         @Test
         @DisplayName("findAll deve retornar todos os clientes cadastrados")
         void findAllDeveRetornarTodos() {
-            Cliente outro = new Cliente("Outro Cliente", null, null, null, null, null, null);
+            Cliente outro = new Cliente("Outro Cliente", null, null, null, null, null);
             when(clienteRepository.findAll()).thenReturn(List.of(clienteExistente, outro));
 
             List<Cliente> resultado = service.findAll();
